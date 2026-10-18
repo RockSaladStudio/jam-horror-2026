@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var camera: Camera3D 
+@export var camera: Camera3D
 @export var speed: float = 5.0
 @export var mouse_sensitivity: float = 0.005
 
@@ -9,6 +9,9 @@ extends CharacterBody3D
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# la camera n'est pas toujours assignee dans l'inspecteur : on la retrouve
+	if not camera:
+		camera = get_node_or_null(^"Camera3D") as Camera3D
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -29,10 +32,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		# lacet sur le corps
 		rotation.y -= event.relative.x * mouse_sensitivity
 		rotation.y = wrapf(rotation.y, 0.0, TAU)
 
-		rotation.x -= event.relative.y * mouse_sensitivity
-		rotation.x = clamp(rotation.x, min_vertical_angle, max_vertical_angle)
-
+		# tangage sur la camera uniquement : incliner le corps ferait partir
+		# le vecteur de deplacement dans le sol ou le plafond
+		if camera:
+			camera.rotation.x -= event.relative.y * mouse_sensitivity
+			camera.rotation.x = clamp(camera.rotation.x, min_vertical_angle, max_vertical_angle)

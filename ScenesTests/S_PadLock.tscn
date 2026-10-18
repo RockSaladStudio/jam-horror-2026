@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://b6dynnr4obefk"]
+
+[ext_resource type="Script" uid="uid://dwxjsb2djxgfa" path="res://ScenesTests/World.gd" id="1_world"]
+[ext_resource type="Script" uid="uid://bclubid7yxd36" path="res://movement.gd" id="2_movement"]
+[ext_resource type="Script" uid="uid://bcmreumed5m0" path="res://Player/Interaction.gd" id="3_interaction"]
+[ext_resource type="PackedScene" path="res://Door/Door.tscn" id="4_door"]
+[ext_resource type="PackedScene" path="res://Keypad/Keypad.tscn" id="5_keypad"]
+
+[sub_resource type="Environment" id="Environment_test"]
+background_mode = 1
+background_color = Color(0.04, 0.04, 0.05, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.52, 0.54, 0.62, 1)
+ambient_light_energy = 0.3
+
+[sub_resource type="StandardMaterial3D" id="Material_floor"]
+albedo_color = Color(0.21, 0.2, 0.19, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_unit"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_unit"]
+
+[sub_resource type="StandardMaterial3D" id="Material_wall"]
+albedo_color = Color(0.36, 0.35, 0.33, 1)
+roughness = 0.85
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+radius = 0.4
+height = 1.8
+
+[node name="SPadLock" type="Node3D" unique_id=191075731]
+script = ExtResource("1_world")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1347405363]
+environment = SubResource("Environment_test")
+
+[node name="Lights" type="Node3D" parent="." unique_id=576265183]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=1349306304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 3.5)
+light_color = Color(1, 0.87, 0.75, 1)
+light_energy = 1.4
+omni_range = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=1787038975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -3.5)
+light_color = Color(0.8, 0.85, 1, 1)
+omni_range = 10.0
+
+[node name="Room" type="Node3D" parent="." unique_id=985608345]
+
+[node name="Floor" type="StaticBody3D" parent="Room" unique_id=1695246185]
+transform = Transform3D(14, 0, 0, 0, 0.2, 0, 0, 0, 14, 0, -0.1, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Room/Floor" unique_id=1314810646]
+material_override = SubResource("Material_floor")
+mesh = SubResource("BoxMesh_unit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Floor" unique_id=1196081781]
+shape = SubResource("BoxShape3D_unit")
+
+[node name="WallNorth" type="StaticBody3D" parent="Room" unique_id=167586586]
+transform = Transform3D(14, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 1.5, -7)
+
+[node name="Mesh" type="MeshInstance3D" parent="Room/WallNorth" unique_id=1097654359]
+material_override = SubResource("Material_wall")
+mesh = SubResource("BoxMesh_unit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/WallNorth" unique_id=922740399]
+shape = SubResource("BoxShape3D_unit")
+
+[node name="WallSouth" type="StaticBody3D" parent="Room" unique_id=600153985]
+transform = Transform3D(14, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 1.5, 7)
+
+[node name="Mesh" type="MeshInstance3D" parent="Room/WallSouth" unique_id=591616771]
+material_override = SubResource("Material_wall")
+mesh = SubResource("BoxMesh_unit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/WallSouth" unique_id=2073613196]
+shape = SubResource("BoxShape3D_unit")
+
+[node name="WallWest" type="StaticBody3D" parent="Room" unique_id=815315478]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 14, -7, 1.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Room/WallWest" unique_id=1801783642]
+material_override = SubResource("Material_wall")
+mesh = SubResource("BoxMesh_unit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/WallWest" unique_id=1838160369]
+shape = SubResource("BoxShape3D_unit")
+
+[node name="WallEast" type="StaticBody3D" parent="Room" unique_id=224833446]
+transform = Transform3D(0.2, 0, 0, 0, 3, 0, 0, 0, 14, 7, 1.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Room/WallEast" unique_id=1628215738]
+material_override = SubResource("Material_wall")
+mesh = SubResource("BoxMesh_unit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/WallEast" unique_id=477773499]
+shape = SubResource("BoxShape3D_unit")
+
+[node name="DividerLeft" type="StaticBody3D" parent="Room" unique_id=1527792017]
+transform = Transform3D(6.5, 0, 0, 0, 3, 0, 0, 0, 0.2, -3.75, 1.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Room/DividerLeft" unique_id=1285548867]
+material_override = SubResource("Material_wall")
+mesh = SubResource("BoxMesh_unit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/DividerLeft" unique_id=888351146]
+shape = SubResource("BoxShape3D_unit")
+
+[node name="DividerRight" type="StaticBody3D" parent="Room" unique_id=154435568]
+transform = Transform3D(6.5, 0, 0, 0, 3, 0, 0, 0, 0.2, 3.75, 1.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Room/DividerRight" unique_id=358086781]
+material_override = SubResource("Material_wall")
+mesh = SubResource("BoxMesh_unit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/DividerRight" unique_id=691143745]
+shape = SubResource("BoxShape3D_unit")
+
+[node name="Lintel" type="StaticBody3D" parent="Room" unique_id=902779837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 2.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Room/Lintel" unique_id=2135093610]
+material_override = SubResource("Material_wall")
+mesh = SubResource("BoxMesh_unit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Lintel" unique_id=1927278509]
+shape = SubResource("BoxShape3D_unit")
+
+[node name="Door" parent="." unique_id=966775071 instance=ExtResource("4_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Keypad" parent="." unique_id=11990383 instance=ExtResource("5_keypad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 1.25, 0.12)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1359693769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+script = ExtResource("2_movement")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1817007490]
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=352780217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Interaction" type="RayCast3D" parent="Player/Camera3D" unique_id=1820401614]
+target_position = Vector3(0, 0, -2.5)
+script = ExtResource("3_interaction")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=482805122]
+
+[node name="Crosshair" type="Label" parent="UI" unique_id=1055016472]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -16.0
+offset_right = 12.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_font_sizes/font_size = 22
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractionLabel" type="Label" parent="UI" unique_id=904406545 groups=["interaction_label"]]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -96.0
+offset_right = 320.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.96, 0.85, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="Label" parent="UI" unique_id=100095009]
+offset_left = 18.0
+offset_top = 14.0
+offset_right = 620.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0.75, 0.78, 0.85, 1)
+theme_override_font_sizes/font_size = 16
+text = "Code : 1947  (C = effacer, E = valider)"
+
+[connection signal="locked_attempt" from="Door" to="." method="_on_door_locked_attempt"]
+[connection signal="code_accepted" from="Keypad" to="." method="_on_keypad_code_accepted"]
+[connection signal="code_rejected" from="Keypad" to="." method="_on_keypad_code_rejected"]
