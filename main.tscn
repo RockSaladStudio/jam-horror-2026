@@ -16,7 +16,7 @@ render_priority = 0
 shader = ExtResource("1_0xm2m")
 shader_parameter/blindfold_progress = 0.0
 shader_parameter/noise_intensity = 0.070000003325
-shader_parameter/dark_visibility = 0.010000000475
+shader_parameter/dark_visibility = 0.0350000016625
 shader_parameter/blind_distance = 2.0000000475
 shader_parameter/open_distance = 50.0
 
@@ -111,6 +111,24 @@ mesh = SubResource("BoxMesh_72w31")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="enviro/MeshInstance3D9/StaticBody3D" unique_id=1914654737]
 shape = SubResource("BoxShape3D_72w31")
 
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="enviro" unique_id=1049193000]
+transform = Transform3D(0.5, 0, 0, 0, 6.41723, 0, 0, 0, 5.5975337, -0.062817454, 0, -0.37203538)
+mesh = SubResource("BoxMesh_72w31")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="enviro/MeshInstance3D10" unique_id=1858937247]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enviro/MeshInstance3D10/StaticBody3D" unique_id=961447523]
+shape = SubResource("BoxShape3D_72w31")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="enviro" unique_id=476255391]
+transform = Transform3D(-2.1855694e-08, 0, 5.5975337, 0, 6.41723, 0, -0.5, 0, -2.4467596e-07, 2.9836783, 0, -2.9178143)
+mesh = SubResource("BoxMesh_72w31")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="enviro/MeshInstance3D11" unique_id=482053657]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enviro/MeshInstance3D11/StaticBody3D" unique_id=106085356]
+shape = SubResource("BoxShape3D_72w31")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1970094830]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0396473, 3.700154)
 light_color = Color(1, 0, 0, 1)
@@ -126,6 +144,7 @@ light_specular = 1.0
 omni_range = 10.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2097779225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.129897)
 script = ExtResource("2_1bvp3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1769869909]

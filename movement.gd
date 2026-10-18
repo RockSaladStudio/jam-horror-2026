@@ -1,9 +1,14 @@
 extends CharacterBody3D
 
+@export var camera: Camera3D 
+@export var speed: float = 5.0
+@export var mouse_sensitivity: float = 0.005
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+@export_range(-90.0, 0.0, 0.1, "radians_as_degrees") var min_vertical_angle: float = -PI/2
+@export_range(0.0, 90.0, 0.1, "radians_as_degrees") var max_vertical_angle: float = PI/4
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -15,10 +20,19 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		rotation.y -= event.relative.x * mouse_sensitivity
+		rotation.y = wrapf(rotation.y, 0.0, TAU)
+
+		rotation.x -= event.relative.y * mouse_sensitivity
+		rotation.x = clamp(rotation.x, min_vertical_angle, max_vertical_angle)
+
