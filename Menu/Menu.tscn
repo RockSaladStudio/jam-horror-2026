@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://ddjnlolpdk05i"]
+
+[ext_resource type="Script" uid="uid://b5qsypkfp58kp" path="res://Menu/Menu.gd" id="1_menu"]
+[ext_resource type="Texture2D" uid="uid://hj6h8e2nucco" path="res://Menu/icons/volume_on.svg" id="2_vol"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.04, 0.04, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.1, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08, 0.06, 0.06, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.3, 0.28, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+bg_color = Color(0.4, 0.05, 0.05, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.15, 0.15, 1)
+
+[sub_resource type="Theme" id="Theme_menu"]
+default_font_size = 28
+Button/colors/font_color = Color(0.91, 0.886, 0.84, 1)
+Button/colors/font_focus_color = Color(1, 0.85, 0.85, 1)
+Button/colors/font_hover_color = Color(1, 0.85, 0.85, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_hover")
+Button/styles/hover = SubResource("StyleBoxFlat_hover")
+Button/styles/normal = SubResource("StyleBoxFlat_normal")
+Button/styles/pressed = SubResource("StyleBoxFlat_pressed")
+Label/colors/font_color = Color(0.91, 0.886, 0.84, 1)
+
+[node name="Menu" type="Control" unique_id=1389167530]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_menu")
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="." unique_id=938549481]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.02, 0.02, 1)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=45838591]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=2046927979]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Center/VBox" unique_id=1188428440]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 64
+text = "JamHorror2026"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/VBox" unique_id=1464266491]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Center/VBox" unique_id=1343594814]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="Center/VBox" unique_id=1024892293]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="Volume" type="HBoxContainer" parent="." unique_id=1734670236]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -284.0
+offset_top = -72.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="VolumeButton" type="Button" parent="Volume" unique_id=452262643]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Couper le son"
+focus_mode = 0
+icon = ExtResource("2_vol")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="VolumeSlider" type="HSlider" parent="Volume" unique_id=277082912]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+max_value = 1.0
+step = 0.01
+value = 0.8
