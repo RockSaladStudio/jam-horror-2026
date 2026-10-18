@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="JamHorror2026"
-run/main_scene="uid://cgfckio7h402r"
+run/main_scene="uid://ddjnlolpdk05i"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioSettings="*res://Menu/AudioSettings.gd"
 
 [display]
 
