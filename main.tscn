@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bclubid7yxd36" path="res://movement.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dgh5e7e8rwisy" path="res://blindfold.gd" id="2_h2yge"]
 [ext_resource type="Material" uid="uid://76emdiu7vq3k" path="res://new_standard_material_3d.tres" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://bcmreumed5m0" path="res://Player/Interaction.gd" id="4_inter"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_72w31"]
 
@@ -159,3 +160,27 @@ visible = false
 material_override = SubResource("ShaderMaterial_ldnb4")
 mesh = SubResource("QuadMesh_72w31")
 script = ExtResource("2_h2yge")
+
+[node name="Interaction" type="RayCast3D" parent="CharacterBody3D/Camera3D"]
+target_position = Vector3(0, 0, -2.5)
+script = ExtResource("4_inter")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InteractionLabel" type="Label" parent="UI" groups=["interaction_label"]]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -96.0
+offset_right = 320.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.96, 0.85, 1)
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
