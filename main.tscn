@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bcmreumed5m0" path="res://Player/Interaction.gd" id="4_inter"]
 [ext_resource type="AudioStream" uid="uid://beqa7ahlg42k5" path="res://Audio/sfx/wall_weak_hit.wav" id="6_272bh"]
 [ext_resource type="AudioStream" uid="uid://c5b5s0n4ljnom" path="res://Audio/sfx/wall_contact.wav" id="7_5vw27"]
+[ext_resource type="AudioStream" uid="uid://dn7a8wctpp1rk" path="res://Audio/music/therapeuticaria812-dark-horor-293085.ogg" id="10_4c57u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_72w31"]
 
@@ -198,3 +199,8 @@ theme_override_colors/font_color = Color(1, 0.96, 0.85, 1)
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1873000272]
+stream = ExtResource("10_4c57u")
+volume_db = -15.0
+autoplay = true
