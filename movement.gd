@@ -80,6 +80,6 @@ func _cogner_mur() -> void:
 	if _aie:
 		return  # Pour le pas faire plusieurs "aïe"
 	_aie = true
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.5).timeout
 	aie_sfx.play()
 	_aie = false

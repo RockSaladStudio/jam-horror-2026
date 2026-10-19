@@ -177,6 +177,7 @@ stream = ExtResource("6_272bh")
 stream = ExtResource("7_5vw27")
 
 [node name="StepSFX" type="AudioStreamPlayer" parent="CharacterBody3D" unique_id=466165678]
+volume_db = -10.0
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1665647011]
 
