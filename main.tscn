@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cgfckio7h402r"]
 
-[ext_resource type="Shader" uid="uid://devo6ffi071jb" path="res://shaders/blindfold.gdshader" id="1_0xm2m"]
+[ext_resource type="Shader" uid="uid://devo6ffi071jb" path="res://new_shader.gdshader" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bclubid7yxd36" path="res://scripts/movement.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dgh5e7e8rwisy" path="res://scripts/blindfold.gd" id="2_h2yge"]
 [ext_resource type="Material" uid="uid://76emdiu7vq3k" path="res://materials/new_standard_material_3d.tres" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://c2k2jn6hwhvih" path="res://Audio/sfx/step_cement_1.wav" id="3_lswn8"]
+[ext_resource type="AudioStream" uid="uid://bblhjiv3nho04" path="res://Audio/sfx/step_cement_2.wav" id="4_a6jrf"]
 [ext_resource type="Script" uid="uid://bcmreumed5m0" path="res://Player/Interaction.gd" id="4_inter"]
 [ext_resource type="AudioStream" uid="uid://beqa7ahlg42k5" path="res://Audio/sfx/wall_weak_hit.wav" id="6_272bh"]
 [ext_resource type="AudioStream" uid="uid://c5b5s0n4ljnom" path="res://Audio/sfx/wall_contact.wav" id="7_5vw27"]
@@ -83,6 +85,7 @@ omni_range = 10.0
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2097779225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.129897)
 script = ExtResource("2_1bvp3")
+sons_pas = Array[AudioStream]([ExtResource("3_lswn8"), ExtResource("4_a6jrf")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1769869909]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7821846, 0)
