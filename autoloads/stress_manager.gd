@@ -1,88 +1,94 @@
 extends Node
-## StressManager - Gère le niveau de stress du joueur et les paramètres de spawn
-## À déclarer comme Autoload dans Project Settings > AutoLoad avec le nom "StressManager"
+## StressManager - Gère le niveau de stress du joueur
+## Autoload déclaré via stress_manager.tscn, réglable par le designer dans l'Inspecteur
 
-# Niveau de stress actuel (0-100)
+## Émis quand le palier de stress change (0 à 4)
+signal tier_changed(tier: int)
+## Émis quand le stress atteint le maximum (défaite)
+signal stress_maxed
+
+# Niveau de stress actuel
 var stress: float = 0.0
+# Référence au bandeau, assignée par le bandeau lui-même à son apparition dans la scène
+var blindfold: Blindfold
+# Palier actuel (0 à 4)
+var current_tier: int = 0
+# Temps passé avec le bandeau complètement baissé
+var blindfold_down_time: float = 0.0
+# Évite d'émettre stress_maxed à chaque frame une fois le maximum atteint
+var has_maxed: bool = false
 
-# Taux d'augmentation du stress par seconde quand un monstre est visible
-@export var stress_increase_rate: float = 1.0
+@export_group("Jauge")
+## Stress maximum, l'atteindre déclenche la défaite
+@export_range(1.0, 500.0, 1.0) var max_stress: float = 100.0
+## Vitesse de montée du stress par seconde quand le monstre est vu
+@export_range(0.0, 50.0, 0.1) var stress_increase_rate: float = 1.0
+## Vitesse de descente du stress par seconde quand le bandeau reste baissé
+@export_range(0.0, 50.0, 0.1) var stress_decrease_rate: float = 1.0
+## Temps en secondes avec le bandeau baissé avant que le stress commence à descendre
+@export_range(0.0, 10.0, 0.1) var stress_decrease_delay: float = 2.0
 
-# Stress maximum
-@export var max_stress: float = 100.0
-
-# Référence à la caméra du joueur (à set depuis le MonsterSpawner)
-@export var camera: Camera3D
-
-# Seuils de stress pour les différents niveaux de spawn
-# [0-25], [25-50], [50-75], [75-100]
-@export var stress_thresholds: Array[float] = [0.0, 25.0, 50.0, 75.0]
-
-# Intervalles de spawn (en secondes) pour chaque palier de stress
-# Plus le stress est élevé, plus le monstre apparaît fréquemment
-@export var spawn_intervals: Array[float] = [5.0, 3.0, 1.0, 0.5]
-
-# Multiplicateurs de taille minimale et maximale
-@export var min_size_multiplier: float = 1.0
-@export var max_size_multiplier: float = 3.0
-
-# Multiplicateurs de distance minimale et maximale (0 = très proche, 1 = distance normale)
-@export var min_distance_multiplier: float = 0.3
-@export var max_distance_multiplier: float = 1.0
+@export_group("Paliers")
+## Seuil d'entrée de chaque palier (1, 2, 3, 4), dans l'ordre croissant et sous max_stress
+@export var stress_thresholds: Array[float] = [20.0, 40.0, 60.0, 80.0]
 
 
-## Augmente le stress (appelé automatiquement quand un monstre est dans le FOV)
+func _process(delta: float) -> void:
+	# Pas de bandeau (menu, scène pas encore prête) : rien à faire
+	if not is_instance_valid(blindfold):
+		return
+
+	_update_decrease(delta)
+	_update_tier()
+	_check_max()
+
+
+## Augmente le stress (appelé quand le monstre est vu)
 func increase_stress(delta: float) -> void:
 	stress = min(stress + stress_increase_rate * delta, max_stress)
 
 
-## Réinitialise le stress (optionnel, si besoin pour le gameplay)
+## Fait redescendre le stress quand le bandeau reste baissé assez longtemps
+func _update_decrease(delta: float) -> void:
+	if blindfold.current_progress <= 0.0:
+		blindfold_down_time += delta
+		if blindfold_down_time >= stress_decrease_delay:
+			stress = max(stress - stress_decrease_rate * delta, 0.0)
+	else:
+		blindfold_down_time = 0.0
+
+
+## Renvoie le palier correspondant au stress actuel (0 à 4)
+func get_tier() -> int:
+	var tier := 0
+	for threshold in stress_thresholds:
+		if stress >= threshold:
+			tier += 1
+	return tier
+
+
+## Émet tier_changed uniquement quand le palier change
+func _update_tier() -> void:
+	var new_tier := get_tier()
+	if new_tier != current_tier:
+		current_tier = new_tier
+		tier_changed.emit(current_tier)
+		print("Palier de stress : ", current_tier)
+
+
+## Émet stress_maxed une seule fois quand le maximum est atteint
+func _check_max() -> void:
+	if stress >= max_stress and not has_maxed:
+		has_maxed = true
+		stress_maxed.emit()
+		print("Stress max atteint")
+
+
+## Réinitialise tout (à appeler au redémarrage d'une partie)
 func reset_stress() -> void:
 	stress = 0.0
-
-
-## Obtient l'intervalle de spawn actuel en secondes (basé sur le stress)
-func get_spawn_interval() -> float:
-	if stress >= stress_thresholds[3]:
-		return spawn_intervals[3]
-	elif stress >= stress_thresholds[2]:
-		return spawn_intervals[2]
-	elif stress >= stress_thresholds[1]:
-		return spawn_intervals[1]
-	else:
-		return spawn_intervals[0]
-
-
-## Obtient la probabilité de spawn par seconde (alternative à l'intervalle)
-## Utile si tu préfères un système probabiliste
-func get_spawn_probability() -> float:
-	# [0-25]: 10%, [25-50]: 30%, [50-75]: 70%, [75+]: 100%
-	var probabilities: Array[float] = [0.1, 0.3, 0.7, 1.0]
-	if stress >= stress_thresholds[3]:
-		return probabilities[3]
-	elif stress >= stress_thresholds[2]:
-		return probabilities[2]
-	elif stress >= stress_thresholds[1]:
-		return probabilities[1]
-	else:
-		return probabilities[0]
-
-
-## Calcule le multiplicateur de taille basé sur le stress actuel
-## plus le stress est élevé, plus le monstre est gros
-func get_size_multiplier() -> float:
-	var ratio = stress / max(max_stress, 0.001)
-	return lerp(min_size_multiplier, max_size_multiplier, ratio)
-
-
-## Calcule le multiplicateur de distance basé sur le stress actuel
-## plus le stress est élevé, plus le monstre apparaît proche
-func get_distance_multiplier() -> float:
-	var ratio = stress / max(max_stress, 0.001)
-	return lerp(max_distance_multiplier, min_distance_multiplier, ratio)
-
-
-## Calcule la taille du monstre basée sur le stress
-func get_monster_scale() -> Vector3:
-	var multiplier = get_size_multiplier()
-	return Vector3(multiplier, multiplier, multiplier)
+	blindfold_down_time = 0.0
+	has_maxed = false
+	if current_tier != 0:
+		current_tier = 0
+		tier_changed.emit(0)

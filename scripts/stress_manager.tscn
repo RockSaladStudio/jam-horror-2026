@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://k60m3y1x1177"]
+
+[ext_resource type="Script" uid="uid://b3n8v80u10roq" path="res://autoloads/stress_manager.gd" id="1_buvok"]
+
+[node name="StressManager" type="Node" unique_id=2099005285]
+script = ExtResource("1_buvok")
+stress_increase_rate = 10.2
+stress_decrease_rate = 10.2
