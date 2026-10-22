@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bevnjwmniisfr"]
+
+[ext_resource type="Shader" uid="uid://bolg43gja5106" path="res://shaders/placeholder.gdshader" id="1_x2g5c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_e81vb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ldnb4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewupo"]
+render_priority = 0
+shader = ExtResource("1_x2g5c")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_72w31"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e81vb"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xtyoe"]
+height = 1.6923828
+
+[node name="Node3D" type="Node3D" unique_id=1030121008]
+
+[node name="block" type="MeshInstance3D" parent="." unique_id=219991367]
+transform = Transform3D(0.78825635, 0, 0, 0, 1, 0, 0, 0, 0.35041344, 0, 0, 0)
+mesh = SubResource("BoxMesh_e81vb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="block" unique_id=393242224]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block/StaticBody3D" unique_id=1783217678]
+shape = SubResource("BoxShape3D_ldnb4")
+
+[node name="thumbwheel_A" type="MeshInstance3D" parent="." unique_id=1982117824]
+transform = Transform3D(0.6, 0, 0, 0, 0.1, 0, 0, 0, 0.6, 0.25159317, -0.079143345, 0)
+material_override = SubResource("ShaderMaterial_ewupo")
+mesh = SubResource("CylinderMesh_72w31")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="thumbwheel_A" unique_id=1719256659]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="thumbwheel_A/StaticBody3D" unique_id=1876726544]
+shape = SubResource("CylinderShape3D_e81vb")
+
+[node name="thumbwheel_B" type="MeshInstance3D" parent="." unique_id=984024465]
+transform = Transform3D(0.6, 0, 0, 0, 0.1, 0, 0, 0, 0.6, 0.25159317, 0.19790739, 0)
+material_override = SubResource("ShaderMaterial_ewupo")
+mesh = SubResource("CylinderMesh_72w31")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="thumbwheel_B" unique_id=868994927]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="thumbwheel_B/StaticBody3D" unique_id=1558792047]
+shape = SubResource("CylinderShape3D_e81vb")
+
+[node name="thumbwheel_C" type="MeshInstance3D" parent="." unique_id=853207780]
+transform = Transform3D(0.6, 0, 0, 0, 0.1, 0, 0, 0, 0.6, 0.25159317, -0.3590523, 0)
+material_override = SubResource("ShaderMaterial_ewupo")
+mesh = SubResource("CylinderMesh_72w31")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="thumbwheel_C" unique_id=1319757459]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="thumbwheel_C/StaticBody3D" unique_id=936173189]
+shape = SubResource("CylinderShape3D_e81vb")
+
+[node name="block2" type="MeshInstance3D" parent="." unique_id=1350818193]
+transform = Transform3D(0.71047574, 0, 0, 0, 1, 0, 0, 0, 0.26383245, 0.0019812584, 0.486704, 0)
+mesh = SubResource("CapsuleMesh_xtyoe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="block2" unique_id=877463479]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block2/StaticBody3D" unique_id=321789137]
+shape = SubResource("BoxShape3D_ldnb4")

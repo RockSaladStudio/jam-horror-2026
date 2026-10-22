@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://n8k4l25gocld"]
+
+[ext_resource type="Script" uid="uid://bnt27jixoii6c" path="res://scripts/monster/monster.gd" id="1_rk3jy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_72w31"]
+
+[node name="Monster" type="MeshInstance3D" unique_id=1708816216]
+mesh = SubResource("CapsuleMesh_72w31")
+script = ExtResource("1_rk3jy")

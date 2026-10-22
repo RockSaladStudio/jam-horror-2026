@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bli2mvjkspep7"]
+
+[ext_resource type="Script" uid="uid://bsx7gqghfetj2" path="res://scripts/monster/monster_spawner.gd" id="1_vxipn"]
+[ext_resource type="PackedScene" uid="uid://n8k4l25gocld" path="res://scenes/monster/monster.tscn" id="2_r07io"]
+
+[node name="MonsterSpawner" type="Node3D" unique_id=1006326142]
+script = ExtResource("1_vxipn")
+monster_scene = ExtResource("2_r07io")
+max_spawn_distance = 20.0
