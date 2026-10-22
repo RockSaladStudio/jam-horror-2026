@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cgvllabcg2cc1"]
+
+[ext_resource type="Script" uid="uid://ckc1027aa22hc" path="res://Menu/PauseMenu/PauseMenu.gd" id="1_r25e1"]
+
+[node name="PauseMenu" type="Control" unique_id=1299003614]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r25e1")
+
+[node name="Center" type="CenterContainer" parent="." unique_id=21985405]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=1543898492]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Center/VBox" unique_id=1600880683]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 64
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/VBox" unique_id=152514061]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Center/VBox" unique_id=1364052466]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="Center/VBox" unique_id=982719561]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Menu"
+
+[connection signal="pressed" from="Center/VBox/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Center/VBox/QuitButton" to="." method="_on_quit_button_pressed"]
