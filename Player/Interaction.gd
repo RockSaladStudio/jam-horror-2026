@@ -3,6 +3,7 @@ extends RayCast3D
 const LABEL_GROUP := &"interaction_label"
 
 @export var action: StringName = &"interact"
+@export var menu_action: StringName = &"MenuGame"
 
 var _current: Interactable
 var _label: Label
