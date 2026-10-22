@@ -41,8 +41,9 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:cog-e": {
-"generate/physics": true
+"PATH:arrow-basic-rounded": {
+"generate/physics": true,
+"physics/shape_type": 2
 }
 }
 }
