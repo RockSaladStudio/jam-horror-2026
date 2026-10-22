@@ -18,6 +18,7 @@ const KEY_ENTER := "E"
 @export var press_sound: AudioStream
 @export var accept_sound: AudioStream
 @export var reject_sound: AudioStream
+@export var cancel_sound: AudioStream
 
 @export_group("Couleurs")
 @export var idle_color: Color = Color(0.35, 1.0, 0.45)
@@ -51,6 +52,9 @@ func _on_key_pressed(key: String) -> void:
 			entry = ""
 			entry_changed.emit(entry)
 			_refresh_display()
+			if cancel_sound:
+				await _audio.finished
+				_play(cancel_sound)
 		KEY_ENTER:
 			_submit()
 		_:

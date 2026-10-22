@@ -52,10 +52,10 @@ func _physics_process(delta: float) -> void:
 			_distance_pas = 0.0
 			pas_sfx.stream = sons_pas[_pied]
 			pas_sfx.play()
-			_pied = 1 - _pied  # Alternance des sons pour les pas
+			_pied = 1 - _pied
 	else:
-		_distance_pas = pas_distance  # A la reprise, le premier pas part tout de suite
-		_pied = 0                     # C'est toujours le son 1
+		_distance_pas = pas_distance
+		_pied = 0                     
 	
 	# Son seulement au moment du contact, pas à chaque frame passée contre le mur
 	var touche := is_on_wall()
@@ -78,7 +78,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _cogner_mur() -> void:
 	impact_sfx.play()
 	if _aie:
-		return  # Pour le pas faire plusieurs "aïe"
+		return  # Pour ne pas faire plusieurs "aïe"
 	_aie = true
 	await get_tree().create_timer(0.5).timeout
 	aie_sfx.play()

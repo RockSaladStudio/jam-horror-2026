@@ -1,25 +1,29 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene format=3 uid="uid://dar5rd2a7bbm3"]
 
 [ext_resource type="Script" uid="uid://c8wwp53vi8kyv" path="res://Keypad/Keypad.gd" id="1_keypad"]
 [ext_resource type="Script" uid="uid://c7iyxyh1gpytm" path="res://Interactable/KeypadButton.gd" id="2_button"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_panel"]
-size = Vector3(0.24, 0.42, 0.04)
-
-[sub_resource type="BoxMesh" id="BoxMesh_key"]
-size = Vector3(0.05, 0.05, 0.015)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_key"]
-size = Vector3(0.05, 0.05, 0.015)
+[ext_resource type="AudioStream" uid="uid://dfwxl8yal46pp" path="res://Audio/sfx/key_press.wav" id="2_y037i"]
+[ext_resource type="AudioStream" uid="uid://chkg2er0aofxj" path="res://Audio/sfx/accept_code.wav" id="3_b144e"]
+[ext_resource type="AudioStream" uid="uid://b0ufs22gqx6yt" path="res://Audio/sfx/reject_code.wav" id="4_sisk7"]
+[ext_resource type="AudioStream" uid="uid://b31rewht45afi" path="res://Audio/sfx/cancel_key.wav" id="5_sisk7"]
 
 [sub_resource type="StandardMaterial3D" id="Material_panel"]
 albedo_color = Color(0.13, 0.14, 0.16, 1)
 metallic = 0.4
 roughness = 0.6
 
+[sub_resource type="BoxMesh" id="BoxMesh_panel"]
+size = Vector3(0.24, 0.42, 0.04)
+
 [sub_resource type="StandardMaterial3D" id="Material_key"]
 albedo_color = Color(0.72, 0.72, 0.74, 1)
 roughness = 0.45
+
+[sub_resource type="BoxMesh" id="BoxMesh_key"]
+size = Vector3(0.05, 0.05, 0.015)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_key"]
+size = Vector3(0.05, 0.05, 0.015)
 
 [sub_resource type="StandardMaterial3D" id="Material_key_clear"]
 albedo_color = Color(0.7, 0.22, 0.2, 1)
@@ -29,14 +33,18 @@ roughness = 0.45
 albedo_color = Color(0.25, 0.6, 0.3, 1)
 roughness = 0.45
 
-[node name="Keypad" type="Node3D"]
+[node name="Keypad" type="Node3D" unique_id=1446354729]
 script = ExtResource("1_keypad")
+press_sound = ExtResource("2_y037i")
+accept_sound = ExtResource("3_b144e")
+reject_sound = ExtResource("4_sisk7")
+cancel_sound = ExtResource("5_sisk7")
 
-[node name="Panel" type="MeshInstance3D" parent="."]
+[node name="Panel" type="MeshInstance3D" parent="." unique_id=384013472]
 material_override = SubResource("Material_panel")
 mesh = SubResource("BoxMesh_panel")
 
-[node name="Display" type="Label3D" parent="."]
+[node name="Display" type="Label3D" parent="." unique_id=708012114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.135, 0.021)
 pixel_size = 0.0016
 modulate = Color(0.35, 1, 0.45, 1)
@@ -44,32 +52,32 @@ text = "----"
 font_size = 48
 outline_size = 0
 
-[node name="StatusLight" type="OmniLight3D" parent="."]
+[node name="StatusLight" type="OmniLight3D" parent="." unique_id=1728946030]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0.1)
 visible = false
 light_color = Color(0.35, 1, 0.45, 1)
 light_energy = 2.0
 omni_range = 0.6
 
-[node name="Audio" type="AudioStreamPlayer3D" parent="."]
+[node name="Audio" type="AudioStreamPlayer3D" parent="." unique_id=1454654208]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
 unit_size = 3.0
 
-[node name="Keys" type="Node3D" parent="."]
+[node name="Keys" type="Node3D" parent="." unique_id=219495264]
 
-[node name="Key1" type="StaticBody3D" parent="Keys"]
+[node name="Key1" type="StaticBody3D" parent="Keys" unique_id=1112031265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.062, 0.055, 0.0275)
 script = ExtResource("2_button")
 key = "1"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key1"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key1" unique_id=590572190]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key1"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key1" unique_id=376918814]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key1"]
+[node name="Label" type="Label3D" parent="Keys/Key1" unique_id=1765086082]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -77,19 +85,19 @@ text = "1"
 font_size = 40
 outline_size = 0
 
-[node name="Key2" type="StaticBody3D" parent="Keys"]
+[node name="Key2" type="StaticBody3D" parent="Keys" unique_id=693151538]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055, 0.0275)
 script = ExtResource("2_button")
 key = "2"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key2"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key2" unique_id=1656812065]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key2" unique_id=262844830]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key2"]
+[node name="Label" type="Label3D" parent="Keys/Key2" unique_id=646760722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -97,19 +105,19 @@ text = "2"
 font_size = 40
 outline_size = 0
 
-[node name="Key3" type="StaticBody3D" parent="Keys"]
+[node name="Key3" type="StaticBody3D" parent="Keys" unique_id=56091760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062, 0.055, 0.0275)
 script = ExtResource("2_button")
 key = "3"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key3"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key3" unique_id=733342246]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key3" unique_id=634783709]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key3"]
+[node name="Label" type="Label3D" parent="Keys/Key3" unique_id=306614225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -117,19 +125,19 @@ text = "3"
 font_size = 40
 outline_size = 0
 
-[node name="Key4" type="StaticBody3D" parent="Keys"]
+[node name="Key4" type="StaticBody3D" parent="Keys" unique_id=652035569]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.062, -0.007, 0.0275)
 script = ExtResource("2_button")
 key = "4"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key4"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key4" unique_id=1013641469]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key4" unique_id=681038455]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key4"]
+[node name="Label" type="Label3D" parent="Keys/Key4" unique_id=517448373]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -137,19 +145,19 @@ text = "4"
 font_size = 40
 outline_size = 0
 
-[node name="Key5" type="StaticBody3D" parent="Keys"]
+[node name="Key5" type="StaticBody3D" parent="Keys" unique_id=546965449]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.007, 0.0275)
 script = ExtResource("2_button")
 key = "5"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key5"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key5" unique_id=1427870400]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key5" unique_id=359948647]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key5"]
+[node name="Label" type="Label3D" parent="Keys/Key5" unique_id=1950602866]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -157,19 +165,19 @@ text = "5"
 font_size = 40
 outline_size = 0
 
-[node name="Key6" type="StaticBody3D" parent="Keys"]
+[node name="Key6" type="StaticBody3D" parent="Keys" unique_id=1087171318]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062, -0.007, 0.0275)
 script = ExtResource("2_button")
 key = "6"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key6"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key6" unique_id=380126636]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key6" unique_id=1181630253]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key6"]
+[node name="Label" type="Label3D" parent="Keys/Key6" unique_id=1282758025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -177,19 +185,19 @@ text = "6"
 font_size = 40
 outline_size = 0
 
-[node name="Key7" type="StaticBody3D" parent="Keys"]
+[node name="Key7" type="StaticBody3D" parent="Keys" unique_id=801788329]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.062, -0.069, 0.0275)
 script = ExtResource("2_button")
 key = "7"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key7"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key7" unique_id=2138849228]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key7"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key7" unique_id=443636266]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key7"]
+[node name="Label" type="Label3D" parent="Keys/Key7" unique_id=19793978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -197,19 +205,19 @@ text = "7"
 font_size = 40
 outline_size = 0
 
-[node name="Key8" type="StaticBody3D" parent="Keys"]
+[node name="Key8" type="StaticBody3D" parent="Keys" unique_id=1964044503]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.069, 0.0275)
 script = ExtResource("2_button")
 key = "8"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key8"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key8" unique_id=527887042]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key8"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key8" unique_id=1557526768]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key8"]
+[node name="Label" type="Label3D" parent="Keys/Key8" unique_id=1661751825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -217,19 +225,19 @@ text = "8"
 font_size = 40
 outline_size = 0
 
-[node name="Key9" type="StaticBody3D" parent="Keys"]
+[node name="Key9" type="StaticBody3D" parent="Keys" unique_id=236642171]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062, -0.069, 0.0275)
 script = ExtResource("2_button")
 key = "9"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key9"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key9" unique_id=1919556688]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key9"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key9" unique_id=120030039]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key9"]
+[node name="Label" type="Label3D" parent="Keys/Key9" unique_id=586047835]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -237,19 +245,19 @@ text = "9"
 font_size = 40
 outline_size = 0
 
-[node name="KeyClear" type="StaticBody3D" parent="Keys"]
+[node name="KeyClear" type="StaticBody3D" parent="Keys" unique_id=1635533751]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.062, -0.131, 0.0275)
 script = ExtResource("2_button")
 key = "C"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/KeyClear"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/KeyClear" unique_id=1964117383]
 material_override = SubResource("Material_key_clear")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/KeyClear"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/KeyClear" unique_id=483852552]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/KeyClear"]
+[node name="Label" type="Label3D" parent="Keys/KeyClear" unique_id=2109963122]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -257,19 +265,18 @@ text = "C"
 font_size = 40
 outline_size = 0
 
-[node name="Key0" type="StaticBody3D" parent="Keys"]
+[node name="Key0" type="StaticBody3D" parent="Keys" unique_id=2130489136]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.131, 0.0275)
 script = ExtResource("2_button")
-key = "0"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/Key0"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/Key0" unique_id=1146345379]
 material_override = SubResource("Material_key")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/Key0" unique_id=2059671712]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/Key0"]
+[node name="Label" type="Label3D" parent="Keys/Key0" unique_id=159755074]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
@@ -277,19 +284,19 @@ text = "0"
 font_size = 40
 outline_size = 0
 
-[node name="KeyEnter" type="StaticBody3D" parent="Keys"]
+[node name="KeyEnter" type="StaticBody3D" parent="Keys" unique_id=1669417865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062, -0.131, 0.0275)
 script = ExtResource("2_button")
 key = "E"
 
-[node name="Mesh" type="MeshInstance3D" parent="Keys/KeyEnter"]
+[node name="Mesh" type="MeshInstance3D" parent="Keys/KeyEnter" unique_id=2109369087]
 material_override = SubResource("Material_key_enter")
 mesh = SubResource("BoxMesh_key")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/KeyEnter"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Keys/KeyEnter" unique_id=2071778658]
 shape = SubResource("BoxShape3D_key")
 
-[node name="Label" type="Label3D" parent="Keys/KeyEnter"]
+[node name="Label" type="Label3D" parent="Keys/KeyEnter" unique_id=1493356767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0095)
 pixel_size = 0.0011
 modulate = Color(0.08, 0.08, 0.09, 1)
