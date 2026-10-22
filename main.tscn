@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dlgmlu0mh2vet" path="res://Enviroment/GLB format/pipe-large-side.glb" id="23_lswn8"]
 [ext_resource type="PackedScene" uid="uid://bssc58cxlf22d" path="res://Enviroment/GLB format/pipe-large-long.glb" id="24_a6jrf"]
 [ext_resource type="PackedScene" uid="uid://ds6k5tdm687xe" path="res://Enviroment/GLB format/pipe-large-cross.glb" id="25_xuqvo"]
+[ext_resource type="PackedScene" uid="uid://cgvllabcg2cc1" path="res://Menu/PauseMenu/PauseMenu.tscn" id="26_a6jrf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_72w31"]
 
@@ -273,23 +274,23 @@ transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, -0
 [node name="structure-corner-outer3" parent="." unique_id=1636685674 instance=ExtResource("17_yaehf")]
 transform = Transform3D(0.00077893736, 0, 1.9999999, 0, 2, 0, -1.9999999, 0, 0.00077893736, 3.657339, 0.007531166, 28.010736)
 
-[node name="indicator-special-arrow2" type="Node3D" parent="." unique_id=246267048 instance=ExtResource("21_0odxb")]
+[node name="indicator-special-arrow2" parent="." unique_id=246267048 instance=ExtResource("21_0odxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.950102, 2.4087653, 29.186203)
 metadata/asset_placer_res_id = "uid://deqrewqxkvm3m"
 
-[node name="indicator-special-arrow2 (1)" type="Node3D" parent="." unique_id=404951632 instance=ExtResource("21_0odxb")]
+[node name="indicator-special-arrow2 (1)" parent="." unique_id=404951632 instance=ExtResource("21_0odxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.446002, 0.0006198883, 27.912931)
 metadata/asset_placer_res_id = "uid://deqrewqxkvm3m"
 
-[node name="indicator-special-arrow2 (2)" type="Node3D" parent="." unique_id=1075903931 instance=ExtResource("21_0odxb")]
+[node name="indicator-special-arrow2 (2)" parent="." unique_id=1075903931 instance=ExtResource("21_0odxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0553255, 0.00061941147, 28.385002)
 metadata/asset_placer_res_id = "uid://deqrewqxkvm3m"
 
-[node name="indicator-special-arrow2 (3)" type="Node3D" parent="." unique_id=312623436 instance=ExtResource("21_0odxb")]
+[node name="indicator-special-arrow2 (3)" parent="." unique_id=312623436 instance=ExtResource("21_0odxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.562392, 0.00061941147, 28.891787)
 metadata/asset_placer_res_id = "uid://deqrewqxkvm3m"
 
-[node name="indicator-special-arrow2 (4)" type="Node3D" parent="." unique_id=1016558059 instance=ExtResource("21_0odxb")]
+[node name="indicator-special-arrow2 (4)" parent="." unique_id=1016558059 instance=ExtResource("21_0odxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5746183, 0.00061941147, 29.13027)
 metadata/asset_placer_res_id = "uid://deqrewqxkvm3m"
 
@@ -301,15 +302,15 @@ metadata/asset_placer_res_id = "uid://deqrewqxkvm3m"
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1.6685538, 0.03025341, 24.173246)
 metadata/asset_placer_res_id = "uid://deqrewqxkvm3m"
 
-[node name="indicator-special-arrow2 (7)" type="Node3D" parent="." unique_id=1556707001 instance=ExtResource("21_0odxb")]
+[node name="indicator-special-arrow2 (7)" parent="." unique_id=1556707001 instance=ExtResource("21_0odxb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5369678, 0.00061893463, 31.888662)
 metadata/asset_placer_res_id = "uid://deqrewqxkvm3m"
 
-[node name="structure-yellow-medium2" type="Node3D" parent="." unique_id=606244099 instance=ExtResource("21_getpj")]
+[node name="structure-yellow-medium2" parent="." unique_id=606244099 instance=ExtResource("21_getpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4107015, 0.00061893463, 27.580517)
 metadata/asset_placer_res_id = "uid://cvh622v7eyaxk"
 
-[node name="structure-yellow-medium2 (1)" type="Node3D" parent="." unique_id=1779428975 instance=ExtResource("21_getpj")]
+[node name="structure-yellow-medium2 (1)" parent="." unique_id=1779428975 instance=ExtResource("21_getpj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43783402, 0.00061893463, 26.78077)
 metadata/asset_placer_res_id = "uid://cvh622v7eyaxk"
 
@@ -429,11 +430,11 @@ metadata/asset_placer_res_id = "uid://cvh622v7eyaxk"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.967445, 0.00061893463, 21.964298)
 metadata/asset_placer_res_id = "uid://cvh622v7eyaxk"
 
-[node name="pipe-large-side2" type="Node3D" parent="." unique_id=1248187257 instance=ExtResource("23_lswn8")]
+[node name="pipe-large-side2" parent="." unique_id=1248187257 instance=ExtResource("23_lswn8")]
 transform = Transform3D(7.6286655e-10, -4.370473e-08, 0.99999994, -0.9998477, -0.017452352, 0, 0.017452352, -0.9998477, -4.3711385e-08, -0.7136713, 1.2480309, 26.760345)
 metadata/asset_placer_res_id = "uid://dlgmlu0mh2vet"
 
-[node name="pipe-large-long2" type="Node3D" parent="." unique_id=698074045 instance=ExtResource("24_a6jrf")]
+[node name="pipe-large-long2" parent="." unique_id=698074045 instance=ExtResource("24_a6jrf")]
 transform = Transform3D(0.014971726, -0.99988794, 0, 0.99988794, 0.014971726, 0, 0, 0, 1, -0.19931805, 3.2255619, 26.245514)
 metadata/asset_placer_res_id = "uid://bssc58cxlf22d"
 
@@ -445,11 +446,11 @@ metadata/asset_placer_res_id = "uid://bssc58cxlf22d"
 transform = Transform3D(0.014971726, -0.99988794, 0, 0.99988794, 0.014971726, 0, 0, 0, 1, -0.19931805, 5.152791, 26.245514)
 metadata/asset_placer_res_id = "uid://bssc58cxlf22d"
 
-[node name="pipe-large-long2 (1)" type="Node3D" parent="." unique_id=1254683117 instance=ExtResource("24_a6jrf")]
+[node name="pipe-large-long2 (1)" parent="." unique_id=1254683117 instance=ExtResource("24_a6jrf")]
 transform = Transform3D(-5.0947598e-08, 0, 1.0000001, 0, 1, 0, -1.1655451, 0, -4.3711392e-08, -0.68705547, 0.7179841, 22.198746)
 metadata/asset_placer_res_id = "uid://bssc58cxlf22d"
 
-[node name="pipe-large-long2 (2)" type="Node3D" parent="." unique_id=201567638 instance=ExtResource("24_a6jrf")]
+[node name="pipe-large-long2 (2)" parent="." unique_id=201567638 instance=ExtResource("24_a6jrf")]
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, -0.6991085, 0.7166871, 24.280634)
 metadata/asset_placer_res_id = "uid://bssc58cxlf22d"
 
@@ -459,3 +460,5 @@ metadata/asset_placer_res_id = "uid://bssc58cxlf22d"
 
 [node name="pipe-large-cross2" parent="." unique_id=916065249 instance=ExtResource("25_xuqvo")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.0462117, 1.3237075, 21.744947)
+
+[node name="PauseMenu" parent="." unique_id=1299003614 instance=ExtResource("26_a6jrf")]
