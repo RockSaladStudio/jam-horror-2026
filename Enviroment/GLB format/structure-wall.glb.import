@@ -41,7 +41,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:arrow-basic-rounded": {
+"PATH:structure-wall": {
 "generate/physics": true,
 "physics/shape_type": 2
 }
