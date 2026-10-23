@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bli2mvjkspep7" path="res://scenes/monster/monster_spawner.tscn" id="2_tbgi4"]
 [ext_resource type="Shader" uid="uid://devo6ffi071jb" path="res://shaders/blindfold.gdshader" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://dgh5e7e8rwisy" path="res://scripts/blindfold.gd" id="4_jyhfs"]
+[ext_resource type="AudioStream" uid="uid://chkg2er0aofxj" path="res://Audio/sfx/accept_code.wav" id="6_tefeu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_72w31"]
 
@@ -140,11 +141,12 @@ mesh = SubResource("BoxMesh_72w31")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="enviro/MeshInstance3D12/StaticBody3D" unique_id=1584132253]
 shape = SubResource("BoxShape3D_72w31")
 
-[node name="MonsterSpawner" parent="enviro" unique_id=1006326142 node_paths=PackedStringArray("camera", "blindfold", "player") instance=ExtResource("2_tbgi4")]
+[node name="MonsterSpawner" parent="enviro" unique_id=1006326142 node_paths=PackedStringArray("camera", "blindfold", "player", "audio_death") instance=ExtResource("2_tbgi4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3752265, -2.781566, 6.949825)
 camera = NodePath("../../CharacterBody3D/Camera3D")
 blindfold = NodePath("../../CharacterBody3D/Camera3D/MeshInstance3D")
 player = NodePath("../../CharacterBody3D")
+audio_death = NodePath("../../EhOhFromTeletubbies")
 fov_angle = 60.0
 spawn_chance = 0.01
 
@@ -192,4 +194,7 @@ material_override = SubResource("ShaderMaterial_ldnb4")
 mesh = SubResource("QuadMesh_72w31")
 script = ExtResource("4_jyhfs")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=468092132]
+[node name="EhOhFromTeletubbies" type="AudioStreamPlayer" parent="." unique_id=1195061596]
+stream = ExtResource("6_tefeu")
+volume_db = -15.369
+autoplay = true

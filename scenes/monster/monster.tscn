@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bnt27jixoii6c" path="res://scripts/monster/monster.gd" id="1_rk3jy"]
 [ext_resource type="PackedScene" uid="uid://brhyhxsm3a4qe" path="res://assets_monstres/teletubbie_laa_laa.glb" id="2_1uvy5"]
-[ext_resource type="AudioStream" uid="uid://chkg2er0aofxj" path="res://Audio/sfx/accept_code.wav" id="2_7qtxx"]
+[ext_resource type="AudioStream" uid="uid://bvu1wls3sqmig" path="res://Audio/sfx/eh-oh-from-teletubbies.wav" id="2_7qtxx"]
 
 [node name="Monster" type="Node3D" unique_id=773046877]
 script = ExtResource("1_rk3jy")
@@ -10,3 +10,6 @@ screamer_sound = ExtResource("2_7qtxx")
 
 [node name="Sketchfab_Scene" parent="." unique_id=1855209554 instance=ExtResource("2_1uvy5")]
 transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0, 0.29610652, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=120219199]
+stream = ExtResource("2_7qtxx")

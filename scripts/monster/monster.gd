@@ -11,27 +11,22 @@ var player_death_timer: float = 0.0
 
 @export var player_death_time: float = 5.0
 
+var audio_death: AudioStreamPlayer
+
 # Reference à la camera
 var camera: Camera3D
 
 # Référence au joueur
 var player: CharacterBody3D
 
+var spawner: MonsterSpawner
+
 # Son à jouer à la mort du joueur
 @export var screamer_sound: AudioStream
-
-# Lecteur audio pour le screamer
-var screamer_player: AudioStreamPlayer
 
 
 func _ready() -> void:
 	player_death_timer = 0.0
-	
-	# Créer le lecteur audio pour le screamer
-	screamer_player = AudioStreamPlayer.new()
-	add_child(screamer_player)
-	if screamer_sound:
-		screamer_player.stream = screamer_sound
 
 
 func _process(delta: float) -> void:
@@ -70,8 +65,6 @@ func _is_seen_by_player() -> bool:
 	if not blindfold:
 		return false
 
-	# Le spawner (parent du monstre) vérifie déjà le champ de vision et les murs
-	var spawner = get_parent()
 	if not spawner.is_point_visible(global_position):
 		return false
 
@@ -99,11 +92,11 @@ func trigger_player_death() -> void:
 		look_at(camera.global_position, Vector3.UP)
 		global_rotation.x = x
 		global_rotation.z = z
-		position.y = 0
+		var shape: CapsuleShape3D = player.get_node("CollisionShape3D").shape
+		position.y = player.global_position.y - (shape.height/2)
 
-	# Jouer le son
-	if screamer_player and screamer_sound:
-		screamer_player.play()
+	print("Screamer triggered")
+	audio_death.play()
 
 	get_tree().create_timer(2).timeout.connect(_death_timeout)
 	# Gelé le timer

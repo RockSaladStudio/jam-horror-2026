@@ -1,3 +1,4 @@
+class_name MonsterSpawner
 extends Node3D
 
 # Scène du monstre à instancier
@@ -11,6 +12,8 @@ extends Node3D
 
 # Référence au joueur
 @export var player: CharacterBody3D
+
+@export var audio_death: AudioStreamPlayer
 
 # Angle de champ de vision supplémentaire (en degrés)
 # 0 = utiliser uniquement le frustum de la caméra
@@ -197,10 +200,12 @@ func spawn_monster() -> void:
 
 	# Créer le monstre
 	var monster = monster_scene.instantiate()
-	add_child(monster)
+	get_parent().add_child(monster)
 	monster.global_position = spawn_pos
 	monster.camera = camera
 	monster.player = player
+	monster.spawner = self
+	monster.audio_death = audio_death
 
 	monster.set_blindfold(blindfold)
 	current_monster = monster
