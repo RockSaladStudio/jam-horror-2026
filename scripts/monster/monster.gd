@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends Node3D
 
 # Durée de vie du monstre (en secondes)
 @export var lifespan: float = 5.0

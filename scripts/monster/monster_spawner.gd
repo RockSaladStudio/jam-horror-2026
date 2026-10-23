@@ -199,6 +199,11 @@ func spawn_monster() -> void:
 	var monster = monster_scene.instantiate()
 	add_child(monster)
 	monster.global_position = spawn_pos
+	var x = monster.global_rotation.x
+	var z = monster.global_rotation.z
+	monster.look_at(camera.global_position)
+	monster.global_rotation.x = x
+	monster.global_rotation.z = z
 
 	# Configurer la durée de vie et le bandeau
 	monster.lifespan = monster_lifespan
