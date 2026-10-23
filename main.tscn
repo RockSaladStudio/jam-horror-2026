@@ -42,6 +42,97 @@
 [ext_resource type="PackedScene" uid="uid://ck4kelcelbmm1" path="res://Enviroment/GLB format/pipe-large-bend.glb" id="39_ny7u2"]
 [ext_resource type="PackedScene" uid="uid://dbmdlky4vcmsv" path="res://Enviroment/GLB format/structure-medium.glb" id="40_x3yn0"]
 [ext_resource type="PackedScene" uid="uid://c6dpmpq70ngig" path="res://Enviroment/GLB format/indicator-special-lines.glb" id="41_1w2xm"]
+[ext_resource type="PackedScene" uid="uid://loctge207b4r" path="res://Enviroment/GLB format/door.glb" id="43_d2t1y"]
+
+[sub_resource type="Animation" id="Animation_d2t1y"]
+resource_name = "PorteExitOpen"
+length = 2.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../door-wide-closed2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-2.2801952, 0.16313851, -34.73737), Vector3(-2.2801952, -3.1356473, -34.73737)]
+}
+
+[sub_resource type="Animation" id="Animation_gngh3"]
+resource_name = "PorteOpen"
+length = 2.4666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door-wide-closed3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -1.6666415, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door-wide-closed3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_0n3wm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door-wide-closed3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door-wide-closed3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../door-wide-closed2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.2801952, 0.16313851, -34.73737)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qnost"]
+_data = {
+&"PorteExitOpen": SubResource("Animation_d2t1y"),
+&"PorteOpen": SubResource("Animation_gngh3"),
+&"RESET": SubResource("Animation_0n3wm")
+}
 
 [sub_resource type="BoxMesh" id="BoxMesh_72w31"]
 
@@ -82,19 +173,42 @@ text = "Find the 3 numbers
 to open the exit door."
 font_size = 5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gngh3"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 3.09
+
+[sub_resource type="TextMesh" id="TextMesh_0bg01"]
+material = SubResource("StandardMaterial3D_gngh3")
+text = "Anomaly zone; 
+raise your blindfold with 
+extreme caution"
+font_size = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usmc5"]
+albedo_color = Color(0, 0.8180512, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 0.65
+
+[sub_resource type="TextMesh" id="TextMesh_swpnu"]
+material = SubResource("StandardMaterial3D_usmc5")
+text = "Safe zone"
+
 [sub_resource type="TextMesh" id="TextMesh_7m0xi"]
 text = "6
 "
-font_size = 25
+font_size = 10
 
 [sub_resource type="TextMesh" id="TextMesh_5xxrb"]
 text = "8"
-font_size = 25
+font_size = 10
 
 [sub_resource type="TextMesh" id="TextMesh_dgh26"]
 text = "4
 "
-font_size = 25
+font_size = 10
 
 [sub_resource type="TextMesh" id="TextMesh_r1ixs"]
 text = "2"
@@ -118,6 +232,14 @@ font_size = 8
 [node name="Main" type="Node3D" unique_id=861964695]
 
 [node name="enviro" type="Node" parent="." unique_id=502576652]
+
+[node name="PorteCharniere" type="Node3D" parent="enviro" unique_id=1283072482]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.200726, 0.11486411, 0.2804885)
+
+[node name="door-wide-closed3" parent="enviro/PorteCharniere" unique_id=1098290498 instance=ExtResource("18_getpj")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="enviro/PorteCharniere" unique_id=651330034]
+libraries/ = SubResource("AnimationLibrary_qnost")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="enviro" unique_id=1115791129]
 transform = Transform3D(81.95992, -0.0002382016, 0.14786272, 0.039129198, 0.4996478, -0.040948253, -0.12939785, 0.00021885501, 93.643295, 18.658907, -0.34735373, -0.69814616)
@@ -151,7 +273,7 @@ transform = Transform3D(1.9486909, 0, 0, 0, 1, 0, 0, 0, 1, 1.6749839, 0.01218342
 transform = Transform3D(3.5452461, 0, 0, 0, 1, 0, 0, 0, 1.6669985, -3.2087398, 0.012183428, 1.8496554)
 
 [node name="indicator-special-area5" parent="enviro" unique_id=1442509019 instance=ExtResource("3_5mkgo")]
-transform = Transform3D(3.5452461, 0, 0, 0, 1, 0, 0, 0, 1.6669985, -3.2087398, 0.012183428, -1.610749)
+transform = Transform3D(3.5452461, 0, 0, 0, 1, 0, 0, 0, 1.6669985, -3.2087398, -0.06940496, -1.610749)
 
 [node name="indicator-special-area6" parent="enviro" unique_id=168694926 instance=ExtResource("3_5mkgo")]
 transform = Transform3D(5.324255, 0, 0, 0, 1.2946532, 0, 0, 0, 2.7800784, -2.275786, 0.012183428, -32.5244)
@@ -479,9 +601,10 @@ light_specular = 1.0
 omni_range = 1.078
 omni_attenuation = 1.713
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2097779225]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2097779225 node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6819897, -0.7352801, 33.531006)
 script = ExtResource("2_1bvp3")
+camera = NodePath("Camera3D")
 sons_pas = Array[AudioStream]([ExtResource("3_lswn8"), ExtResource("4_a6jrf")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1769869909]
@@ -782,12 +905,12 @@ transform = Transform3D(-3.013158, 0, 1.7484554e-07, 0, 2, 0, -2.6341866e-07, 0,
 [node name="structure-doorway-wide4" parent="." unique_id=417224679 instance=ExtResource("16_2cqfq")]
 transform = Transform3D(-1.3170933e-07, 0, 1.9999999, 0, 2, 0, -3.013158, 0, -8.742277e-08, 3.690084, 0.008766174, -8.190374)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=634104998]
+transform = Transform3D(8.130372, 0, 0, 0, 5.9870715, 0, 0, 0, 2, -2.0515227, 4.377411, -34.280605)
+mesh = SubResource("TextMesh_a0dc1")
+
 [node name="door-wide-closed2" parent="." unique_id=1849341547 instance=ExtResource("18_getpj")]
 transform = Transform3D(3.1488101, 0, 0, 0, 1.9393526, 0, 0, 0, 2, -2.2801952, 0.16313851, -34.73737)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="door-wide-closed2" unique_id=634104998]
-transform = Transform3D(2.5820458, 0, 0, 0, 3.0871496, 0, 0, 0, 1, 0.07262188, 2.1730306, 0.22838211)
-mesh = SubResource("TextMesh_a0dc1")
 
 [node name="screen-wide2" parent="door-wide-closed2" unique_id=241886624 instance=ExtResource("20_0cp0l")]
 transform = Transform3D(-0.3166434, -0.00012358034, -0.0383773, -4.6566112e-10, 0.5156334, -0.0015612468, 0.024375867, -0.0016053244, -0.49852255, 0.22104388, -0.07949936, 13.187005)
@@ -795,6 +918,20 @@ transform = Transform3D(-0.3166434, -0.00012358034, -0.0383773, -4.6566112e-10, 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="door-wide-closed2/screen-wide2" unique_id=382027796]
 transform = Transform3D(-1.1706973, -0.0015620694, 0.0071837506, 0, 1.5059029, 0.14150372, -0.008495704, 0.21525118, -0.9899116, -0.0002146443, 0.658522, 0.029577846)
 mesh = SubResource("TextMesh_ftsjt")
+
+[node name="screen-wide3" parent="door-wide-closed2" unique_id=567664534 instance=ExtResource("20_0cp0l")]
+transform = Transform3D(-0.3166434, -0.00012358034, -0.0383773, -4.6566093e-10, 0.5156334, -0.0015612468, 0.024375867, -0.0016053244, -0.49852255, -0.6237291, -0.07949936, 17.241394)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="door-wide-closed2/screen-wide3" unique_id=2082135488]
+transform = Transform3D(-0.99999833, -0.0020716526, 5.1796436e-05, -0.002039719, 0.9883753, 0.15202424, -0.00036621094, 0.15202379, -0.98837733, -0.0036668777, 0.6521319, 0.028154224)
+mesh = SubResource("TextMesh_0bg01")
+
+[node name="screen-wide4" parent="door-wide-closed2" unique_id=82106224 instance=ExtResource("20_0cp0l")]
+transform = Transform3D(-0.3166434, -0.00012358034, -0.0383773, -4.6566082e-10, 0.5156334, -0.0015612468, 0.024375867, -0.0016053244, -0.49852255, 0.68688047, -0.14528562, 32.051456)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="door-wide-closed2/screen-wide4" unique_id=964251497]
+transform = Transform3D(-0.9998539, 0.009447632, 0.014278732, 0.011956742, 0.9822168, 0.18736643, -0.0122545995, 0.18750957, -0.98218644, -0.0036804676, 0.62408614, 0.028369904)
+mesh = SubResource("TextMesh_swpnu")
 
 [node name="screen-flat2" parent="." unique_id=1008490541 instance=ExtResource("19_ryguw")]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, -1.8844978, 0.0006198883, -28.249846)
@@ -851,9 +988,6 @@ transform = Transform3D(1.9875664, 0.076461524, -0.20912516, -0.02023935, 1.9326
 [node name="MeshInstance3D" type="MeshInstance3D" parent="screen-hanging-wide7" unique_id=83405984]
 transform = Transform3D(-0.99742335, 0.008502491, 0.07124034, -0.0063064136, 0.97872126, -0.20510413, -0.071468465, -0.20502523, -0.97614485, -0.023324966, 0.41290712, -0.07059479)
 mesh = SubResource("TextMesh_8m5mw")
-
-[node name="door-wide-closed3" parent="." unique_id=1098290498 instance=ExtResource("18_getpj")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.200726, 2.4509954, 0.2804885)
 
 [node name="structure-corner-outer2" parent="." unique_id=204201016 instance=ExtResource("17_yaehf")]
 transform = Transform3D(-2, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, -2, -0.27431113, 0.0023293495, 28.010736)
@@ -1169,6 +1303,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.95
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9171143, 0.8103914, 11.540121)
 camera = NodePath("../CharacterBody3D/Camera3D")
 blindfold = NodePath("../CharacterBody3D/Camera3D/MeshInstance3D")
+max_spawn_distance = 11.0
 
 [node name="Marker3D" type="Marker3D" parent="MonsterSpawner" unique_id=1141003351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8301997, -0.44767547, -31.097965)
@@ -1183,7 +1318,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.047522, -0.44767547, -29.86
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.579817, -0.44767547, -34.700394)
 
 [node name="Marker3D18" type="Marker3D" parent="MonsterSpawner" unique_id=88664971]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.579817, -0.44767547, -11.650362)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4695897, -0.44767547, -14.741728)
+
+[node name="Marker3D62" type="Marker3D" parent="MonsterSpawner" unique_id=2126788340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4695897, -0.44767547, -14.741728)
+
+[node name="Marker3D63" type="Marker3D" parent="MonsterSpawner" unique_id=1376283196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5787935, -0.44767547, -17.073412)
+
+[node name="Marker3D64" type="Marker3D" parent="MonsterSpawner" unique_id=434957271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5787935, -0.44767547, -17.073412)
+
+[node name="Marker3D65" type="Marker3D" parent="MonsterSpawner" unique_id=1954355671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5787935, -0.44767547, -17.073412)
+
+[node name="Marker3D66" type="Marker3D" parent="MonsterSpawner" unique_id=1918444057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5787935, -0.44767547, -17.073412)
 
 [node name="Marker3D19" type="Marker3D" parent="MonsterSpawner" unique_id=509688459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.649593, -0.44767547, -16.480667)
@@ -1755,3 +1905,6 @@ transform = Transform3D(0.004432739, -0.99924594, 0.038573086, 0.99999017, 0.004
 light_color = Color(1, 1, 0, 1)
 spot_range = 2.155
 spot_attenuation = -4.36
+
+[node name="door3" parent="." unique_id=1787733118 instance=ExtResource("43_d2t1y")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.6543431, 0.00902462, 38.818016)
