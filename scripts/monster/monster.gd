@@ -111,6 +111,11 @@ func trigger_player_death() -> void:
 
 	print("Screamer triggered")
 	audio_death.play()
-	toggle_pause()
-	get_tree().change_scene_to_file(MAIN_MENU_PATH)
+	get_tree().create_timer(2).timeout.connect(_death_timer)
+
 	player_death_timer = player_death_time
+
+func _death_timer() -> void:
+	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_file(MAIN_MENU_PATH)
