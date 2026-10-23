@@ -100,13 +100,12 @@ func trigger_player_death() -> void:
 		look_at(camera.global_position, Vector3.UP)
 		global_rotation.x = x
 		global_rotation.z = z
-		var shape: CapsuleShape3D = player.get_node("CollisionShape3D").shape
-		position.y = player.global_position.y - (shape.height/2)
+		global_position.y = 0
 
 	print("Screamer triggered")
 	audio_death.play()
 
-	get_tree().create_timer(2).timeout.connect(_death_timeout)
+	# get_tree().create_timer(2).timeout.connect(_death_timeout)
 	# Gelé le timer
 	player_death_timer = player_death_time
 
