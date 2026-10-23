@@ -24,6 +24,8 @@ var spawner: MonsterSpawner
 # Son à jouer à la mort du joueur
 @export var screamer_sound: AudioStream
 
+var death: bool
+
 
 func _ready() -> void:
 	player_death_timer = 0.0
@@ -76,9 +78,15 @@ func _is_seen_by_player() -> bool:
 
 ## Déclenche la mort du joueur quand le timer est écoulé
 func trigger_player_death() -> void:
+	if death:
+		return
+	death = true
+
 	# Désactiver les mouvements du joueur
 	if player:
 		player.set_defeated()
+		
+
 
 	# Positionner le monstre devant la caméra
 	if camera:

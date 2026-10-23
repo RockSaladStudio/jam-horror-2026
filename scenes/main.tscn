@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bli2mvjkspep7" path="res://scenes/monster/monster_spawner.tscn" id="2_tbgi4"]
 [ext_resource type="Shader" uid="uid://devo6ffi071jb" path="res://shaders/blindfold.gdshader" id="3_jyhfs"]
 [ext_resource type="Script" uid="uid://dgh5e7e8rwisy" path="res://scripts/blindfold.gd" id="4_jyhfs"]
-[ext_resource type="AudioStream" uid="uid://chkg2er0aofxj" path="res://Audio/sfx/accept_code.wav" id="6_tefeu"]
+[ext_resource type="AudioStream" uid="uid://bvu1wls3sqmig" path="res://Audio/sfx/eh-oh-from-teletubbies.wav" id="6_tefeu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_72w31"]
 
@@ -197,4 +197,3 @@ script = ExtResource("4_jyhfs")
 [node name="EhOhFromTeletubbies" type="AudioStreamPlayer" parent="." unique_id=1195061596]
 stream = ExtResource("6_tefeu")
 volume_db = -15.369
-autoplay = true
