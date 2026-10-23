@@ -9,10 +9,12 @@ extends CharacterBody3D
 
 var _is_defeated: bool = false
 
-# Son mur
+# Son mur / box
 @onready var impact_sfx: AudioStreamPlayer = $ImpactSFX
 @onready var aie_sfx: AudioStreamPlayer = $AieSFX
+@export var aie_cooldown: float = 2.0  # secondes minimum entre deux "aïe"
 var _contre_mur := false
+var _contre_box := false
 var _aie_en_attente := false
 
 # Son marche
@@ -66,19 +68,37 @@ func _physics_process(delta: float) -> void:
 		_distance_pas = pas_distance  # à la reprise, le premier pas part tout de suite
 		_pied = 0                     # et c'est toujours le son 1
 
-	# Mur : son seulement au moment du contact, pas à chaque frame
+	# Mur ou box : son d'impact seulement au moment du contact, pas à chaque frame
 	var touche := is_on_wall()
 	if touche and not _contre_mur:
-		_cogner_mur()
+		impact_sfx.play()
 	_contre_mur = touche
 
-func _cogner_mur() -> void:
-	impact_sfx.play()
+	# "Aïe" seulement quand on se cogne dans une box, pas dans un mur
+	var touche_box := _touche_box()
+	if touche_box and not _contre_box:
+		_aie()
+	_contre_box = touche_box
+
+# Une box = une instance d'un GLB "box-*.glb" : le StaticBody3D généré à l'import
+# a pour owner la racine de cette instance.
+func _touche_box() -> bool:
+	for i in get_slide_collision_count():
+		var col := get_slide_collision(i)
+		if col.get_angle(0, up_direction) <= floor_max_angle:
+			continue  # on marche dessus, ce n'est pas un choc
+		var body := col.get_collider() as Node
+		if body and body.owner and body.owner.scene_file_path.get_file().begins_with("box-"):
+			return true
+	return false
+
+func _aie() -> void:
 	if _aie_en_attente:
-		return  # évite d'empiler plusieurs "aïe" si on se cogne plusieurs fois en 1 s
+		return  # évite d'empiler plusieurs "aïe" si on se recogne pendant l'attente
 	_aie_en_attente = true
 	await get_tree().create_timer(1.0).timeout
 	aie_sfx.play()
+	await get_tree().create_timer(aie_cooldown).timeout
 	_aie_en_attente = false
 
 func _unhandled_input(event: InputEvent) -> void:

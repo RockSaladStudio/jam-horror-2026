@@ -7,6 +7,8 @@ signal locked_attempt
 
 @export var locked: bool = true
 @export var animation_name: StringName = &"OpenDoor"
+## Si vide, on prend l'enfant "AnimationPlayer".
+@export var animation_player: AnimationPlayer
 
 @export_group("Textes d'interaction")
 @export var open_text: String = "ouvrir la porte"
@@ -15,7 +17,7 @@ signal locked_attempt
 
 var is_open: bool = false
 
-@onready var _anim: AnimationPlayer = $AnimationPlayer
+@onready var _anim: AnimationPlayer = animation_player if animation_player else $AnimationPlayer
 
 func get_interaction_text() -> String:
 	if is_open:

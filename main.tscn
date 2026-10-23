@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://devo6ffi071jb" path="res://new_shader.gdshader" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://2xywenbxohvv" path="res://Enviroment/GLB format/hopper-square.glb" id="1_gb15f"]
 [ext_resource type="AudioStream" uid="uid://bvu1wls3sqmig" path="res://Audio/sfx/eh-oh-from-teletubbies.wav" id="1_gngh3"]
+[ext_resource type="Script" uid="uid://cykqhyr61bmdn" path="res://Door/door.gd" id="2_0n3wm"]
 [ext_resource type="Script" uid="uid://bclubid7yxd36" path="res://scripts/movement.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dgh5e7e8rwisy" path="res://scripts/blindfold.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://tlfwxavrfne7" path="res://Enviroment/GLB format/indicator-special-area.glb" id="3_5mkgo"]
@@ -44,6 +45,14 @@
 [ext_resource type="PackedScene" uid="uid://dbmdlky4vcmsv" path="res://Enviroment/GLB format/structure-medium.glb" id="40_x3yn0"]
 [ext_resource type="PackedScene" uid="uid://c6dpmpq70ngig" path="res://Enviroment/GLB format/indicator-special-lines.glb" id="41_1w2xm"]
 [ext_resource type="PackedScene" uid="uid://loctge207b4r" path="res://Enviroment/GLB format/door.glb" id="43_d2t1y"]
+[ext_resource type="PackedScene" uid="uid://dar5rd2a7bbm3" path="res://Keypad/Keypad.tscn" id="45_qnost"]
+[ext_resource type="PackedScene" path="res://Menu/VictoryScreen/VictoryScreen.tscn" id="46_victory"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_porte"]
+size = Vector3(1.8, 1.6, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_victoire"]
+size = Vector3(5, 3, 2.4)
 
 [sub_resource type="Animation" id="Animation_d2t1y"]
 resource_name = "PorteExitOpen"
@@ -198,7 +207,8 @@ material = SubResource("StandardMaterial3D_usmc5")
 text = "Safe zone"
 
 [sub_resource type="TextMesh" id="TextMesh_7m0xi"]
-text = "6
+text = "1
+
 "
 font_size = 10
 
@@ -241,6 +251,15 @@ stream = ExtResource("1_gngh3")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.200726, 0.11486411, 0.2804885)
 
 [node name="door-wide-closed3" parent="enviro/PorteCharniere" unique_id=1098290498 instance=ExtResource("18_getpj")]
+
+[node name="Door" type="StaticBody3D" parent="enviro/PorteCharniere/door-wide-closed3" unique_id=591134676 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("2_0n3wm")
+animation_name = &"PorteOpen"
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enviro/PorteCharniere/door-wide-closed3/Door" unique_id=1071771927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.4)
+shape = SubResource("BoxShape3D_porte")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="enviro/PorteCharniere" unique_id=651330034]
 libraries/ = SubResource("AnimationLibrary_qnost")
@@ -565,7 +584,7 @@ area_range = 6.817
 area_attenuation = -0.242
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1970094830]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.971607, 4.166022, 1.71071)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9714653, 4.173248, 1.7103386)
 light_color = Color(0, 1, 0, 1)
 light_indirect_energy = 3.0
 light_specular = 1.0
@@ -916,35 +935,57 @@ mesh = SubResource("TextMesh_a0dc1")
 [node name="door-wide-closed2" parent="." unique_id=1849341547 instance=ExtResource("18_getpj")]
 transform = Transform3D(3.1488101, 0, 0, 0, 1.9393526, 0, 0, 0, 2, -2.2801952, 0.16313851, -34.73737)
 
-[node name="screen-wide2" parent="door-wide-closed2" unique_id=241886624 instance=ExtResource("20_0cp0l")]
-transform = Transform3D(-0.3166434, -0.00012358034, -0.0383773, -4.6566112e-10, 0.5156334, -0.0015612468, 0.024375867, -0.0016053244, -0.49852255, 0.22104388, -0.07949936, 13.187005)
+[node name="Door" type="StaticBody3D" parent="door-wide-closed2" unique_id=939993443 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("2_0n3wm")
+animation_name = &"PorteExitOpen"
+animation_player = NodePath("../../enviro/PorteCharniere/AnimationPlayer")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="door-wide-closed2/screen-wide2" unique_id=382027796]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door-wide-closed2/Door" unique_id=800941508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.4)
+shape = SubResource("BoxShape3D_porte")
+
+[node name="VictoryZone" type="Area3D" parent="." unique_id=1028429788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28, 1.7, -35.6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VictoryZone" unique_id=1035380700]
+shape = SubResource("BoxShape3D_victoire")
+
+[node name="screen-wide2" parent="." unique_id=241886624 instance=ExtResource("20_0cp0l")]
+transform = Transform3D(-0.9970499, -0.00038913102, -0.12084283, -9.030811e-10, 0.999995, -0.0030278082, 0.048751734, -0.003210649, -0.9970451, -1.58417, 0.008961216, -8.363359)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="screen-wide2" unique_id=382027796]
 transform = Transform3D(-1.1706973, -0.0015620694, 0.0071837506, 0, 1.5059029, 0.14150372, -0.008495704, 0.21525118, -0.9899116, -0.0002146443, 0.658522, 0.029577846)
 mesh = SubResource("TextMesh_ftsjt")
 
-[node name="screen-wide3" parent="door-wide-closed2" unique_id=567664534 instance=ExtResource("20_0cp0l")]
-transform = Transform3D(-0.3166434, -0.00012358034, -0.0383773, -4.6566093e-10, 0.5156334, -0.0015612468, 0.024375867, -0.0016053244, -0.49852255, -0.6237291, -0.07949936, 17.241394)
+[node name="screen-wide3" parent="." unique_id=567664534 instance=ExtResource("20_0cp0l")]
+transform = Transform3D(-0.9970499, -0.00038913102, -0.12084283, -9.030807e-10, 0.999995, -0.0030278082, 0.048751734, -0.003210649, -0.9970451, -4.2441998, 0.008961216, -0.25458145)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="door-wide-closed2/screen-wide3" unique_id=2082135488]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="screen-wide3" unique_id=2082135488]
 transform = Transform3D(-0.99999833, -0.0020716526, 5.1796436e-05, -0.002039719, 0.9883753, 0.15202424, -0.00036621094, 0.15202379, -0.98837733, -0.0036668777, 0.6521319, 0.028154224)
 mesh = SubResource("TextMesh_0bg01")
 
-[node name="screen-wide4" parent="door-wide-closed2" unique_id=82106224 instance=ExtResource("20_0cp0l")]
-transform = Transform3D(-0.3166434, -0.00012358034, -0.0383773, -4.6566082e-10, 0.5156334, -0.0015612468, 0.024375867, -0.0016053244, -0.49852255, 0.68688047, -0.14528562, 32.051456)
+[node name="screen-wide4" parent="." unique_id=82106224 instance=ExtResource("20_0cp0l")]
+transform = Transform3D(-0.9970499, -0.00038913102, -0.12084283, -9.0308055e-10, 0.999995, -0.0030278082, 0.048751734, -0.003210649, -0.9970451, -0.117339134, -0.11862156, 29.365543)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="door-wide-closed2/screen-wide4" unique_id=964251497]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="screen-wide4" unique_id=964251497]
 transform = Transform3D(-0.9998539, 0.009447632, 0.014278732, 0.011956742, 0.9822168, 0.18736643, -0.0122545995, 0.18750957, -0.98218644, -0.0036804676, 0.62408614, 0.028369904)
 mesh = SubResource("TextMesh_swpnu")
 
 [node name="screen-flat2" parent="." unique_id=1008490541 instance=ExtResource("19_ryguw")]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, -1.8844978, 0.0006198883, -28.249846)
 
+[node name="Keypad" parent="screen-flat2" unique_id=702263714 instance=ExtResource("45_qnost")]
+transform = Transform3D(-1, 0, 0, 0, 0.5547002, 0.8320503, 0, 0.8320503, -0.5547002, 0, 0.51312, 0.05545)
+code = "271"
+
 [node name="screen-flat3" parent="." unique_id=1417387744 instance=ExtResource("19_ryguw")]
 transform = Transform3D(-2, 0, 3.019916e-07, 0, 2, 0, -3.019916e-07, 0, -2, 1.1175117, 0.0006198883, 6.541018)
 
+[node name="Keypad" parent="screen-flat3" unique_id=1446354729 instance=ExtResource("45_qnost")]
+transform = Transform3D(-1, 0, 0, 0, 0.5547002, 0.8320503, 0, 0.8320503, -0.5547002, 0, 0.51312, 0.05545)
+
 [node name="screen-hanging-wide2" parent="." unique_id=130689629 instance=ExtResource("20_d13ii")]
-transform = Transform3D(-1.9982488, 5.5879354e-09, -0.083675936, -0.021481121, 1.9329727, 0.51298666, 0.08087164, 0.5134362, -1.9312801, -3.0762775, 3.843501, 1.2015839)
+transform = Transform3D(-1.9982488, 3.787714e-09, -0.083675936, -0.021481121, 1.9329727, 0.51298666, 0.080871634, 0.51343614, -1.93128, -3.0761359, 3.850727, 1.2012124)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="screen-hanging-wide2" unique_id=749632532]
 transform = Transform3D(-0.99957794, -0.026098575, -0.012751821, -0.022772556, 0.9766253, -0.21374016, 0.018032067, -0.21335979, -0.9768072, 0.0019667149, 0.33332515, -0.04891038)
@@ -1304,6 +1345,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.95
 [node name="PauseMenu" parent="." unique_id=1299003614 instance=ExtResource("26_a6jrf")]
 
 [node name="MonsterSpawner" parent="." unique_id=1006326142 node_paths=PackedStringArray("camera", "blindfold", "player", "audio_death") instance=ExtResource("27_sqvbp")]
+[node name="VictoryScreen" parent="." unique_id=648325439 node_paths=PackedStringArray("pause_menu") instance=ExtResource("46_victory")]
+pause_menu = NodePath("../PauseMenu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9171143, 0.8103914, 11.540121)
 camera = NodePath("../CharacterBody3D/Camera3D")
 blindfold = NodePath("../CharacterBody3D/Camera3D/MeshInstance3D")
@@ -1965,3 +2008,7 @@ spot_attenuation = -4.36
 
 [node name="door3" parent="." unique_id=1787733118 instance=ExtResource("43_d2t1y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.6543431, 0.00902462, 38.818016)
+
+[connection signal="code_accepted" from="screen-flat2/Keypad" to="door-wide-closed2/Door" method="unlock" unbinds=1]
+[connection signal="code_accepted" from="screen-flat3/Keypad" to="enviro/PorteCharniere/door-wide-closed3/Door" method="unlock" unbinds=1]
+[connection signal="body_entered" from="VictoryZone" to="VictoryScreen" method="_on_victory_zone_body_entered"]

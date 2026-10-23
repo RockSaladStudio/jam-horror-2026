@@ -1,3 +1,4 @@
+class_name PauseMenu
 extends Control
 
 const MAIN_MENU_PATH := "res://Menu/Menu.tscn"
