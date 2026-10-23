@@ -12,6 +12,9 @@ var blindfold: Blindfold
 # Timer pour la durée de vie
 var lifetime_timer: float = 0.0
 
+# Reference à la camera
+var camera: Camera3D
+
 
 func _ready() -> void:
 	lifetime_timer = 0.0
@@ -32,6 +35,12 @@ func _process(delta: float) -> void:
 	# 3. Faire monter le stress si le joueur voit le monstre
 	if _is_seen_by_player():
 		StressManager.increase_stress(delta)
+
+	var x = global_rotation.x
+	var z = global_rotation.z
+	look_at(camera.global_position)
+	global_rotation.x = x
+	global_rotation.z = z
 
 
 ## Assigner la référence au bandeau (appelé par le spawner)
