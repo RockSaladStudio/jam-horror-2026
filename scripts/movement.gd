@@ -104,7 +104,12 @@ func _aie() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if _is_defeated:
 		return
-	if event is InputEventMouseMotion:
+	# Sur le web, le navigateur relâche la souris (Échap, plein écran) et ne la
+	# rend que sur un clic du joueur : on la recapture au clic.
+	if event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		return
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotation.y -= event.relative.x * mouse_sensitivity
 		rotation.y = wrapf(rotation.y, 0.0, TAU)
 
