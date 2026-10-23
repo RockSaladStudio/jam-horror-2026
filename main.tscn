@@ -1345,6 +1345,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.95
 [node name="PauseMenu" parent="." unique_id=1299003614 instance=ExtResource("26_a6jrf")]
 
 [node name="MonsterSpawner" parent="." unique_id=1006326142 node_paths=PackedStringArray("camera", "blindfold", "player", "audio_death") instance=ExtResource("27_sqvbp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30763763, 0)
 camera = NodePath("../CharacterBody3D/Camera3D")
 blindfold = NodePath("../CharacterBody3D/Camera3D/MeshInstance3D")
 player = NodePath("../CharacterBody3D")
@@ -1352,253 +1353,253 @@ audio_death = NodePath("../eh-oh-from-teletubbies")
 spawn_chance = 0.2
 
 [node name="Marker3D" type="Marker3D" parent="MonsterSpawner" unique_id=1141003351]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8301997, -0.44767547, -31.097965)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1711979, 0.00075268745, -19.162643)
 
 [node name="Marker3D4" type="Marker3D" parent="MonsterSpawner" unique_id=1882383880]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0748353, -0.44767547, -31.097965)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.076233, 0.00075268745, -19.162643)
 
 [node name="Marker3D5" type="Marker3D" parent="MonsterSpawner" unique_id=782854942]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.047522, -0.44767547, -29.864948)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.046124, 0.00075268745, -17.929626)
 
 [node name="Marker3D17" type="Marker3D" parent="MonsterSpawner" unique_id=519370602]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.579817, -0.44767547, -34.700394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5784187, 0.00075268745, -22.765072)
 
 [node name="Marker3D18" type="Marker3D" parent="MonsterSpawner" unique_id=88664971]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4695897, -0.44767547, -14.741728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46819115, 0.00075268745, -2.806406)
 
 [node name="Marker3D62" type="Marker3D" parent="MonsterSpawner" unique_id=2126788340]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4695897, -0.44767547, -14.741728)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46819115, 0.00075268745, -2.806406)
 
 [node name="Marker3D63" type="Marker3D" parent="MonsterSpawner" unique_id=1376283196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5787935, -0.44767547, -17.073412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5801916, 0.00075268745, -5.13809)
 
 [node name="Marker3D64" type="Marker3D" parent="MonsterSpawner" unique_id=434957271]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5787935, -0.44767547, -17.073412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5801916, 0.00075268745, -5.13809)
 
 [node name="Marker3D65" type="Marker3D" parent="MonsterSpawner" unique_id=1954355671]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5787935, -0.44767547, -17.073412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5801916, 0.00075268745, -5.13809)
 
 [node name="Marker3D66" type="Marker3D" parent="MonsterSpawner" unique_id=1918444057]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5787935, -0.44767547, -17.073412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5801916, 0.00075268745, -5.13809)
 
 [node name="Marker3D19" type="Marker3D" parent="MonsterSpawner" unique_id=509688459]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.649593, -0.44767547, -16.480667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.648195, 0.00075268745, -4.5453453)
 
 [node name="Marker3D20" type="Marker3D" parent="MonsterSpawner" unique_id=1076195860]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.773387, -0.44767547, -15.981377)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.771989, 0.00075268745, -4.046055)
 
 [node name="Marker3D21" type="Marker3D" parent="MonsterSpawner" unique_id=1389699372]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.893156, -0.44767547, -24.390104)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.891758, 0.00075268745, -12.4547825)
 
 [node name="Marker3D67" type="Marker3D" parent="MonsterSpawner" unique_id=137012203]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.861382, -0.44767547, -24.390104)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.859983, 0.00075268745, -12.4547825)
 
 [node name="Marker3D68" type="Marker3D" parent="MonsterSpawner" unique_id=921625855]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.295938, -0.44767547, -24.390104)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.29454, 0.00075268745, -12.4547825)
 
 [node name="Marker3D69" type="Marker3D" parent="MonsterSpawner" unique_id=566621822]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.295938, -0.44767547, -21.391264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.29454, 0.00075268745, -9.455942)
 
 [node name="Marker3D70" type="Marker3D" parent="MonsterSpawner" unique_id=801968399]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.494375, -0.44767547, -21.391264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.492977, 0.00075268745, -9.455942)
 
 [node name="Marker3D71" type="Marker3D" parent="MonsterSpawner" unique_id=1580780544]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.282883, -0.44767547, -16.602959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.281485, 0.00075268745, -4.667637)
 
 [node name="Marker3D72" type="Marker3D" parent="MonsterSpawner" unique_id=1918747078]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.89899, -0.44767547, -14.035971)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.897593, 0.00075268745, -2.1006489)
 
 [node name="Marker3D73" type="Marker3D" parent="MonsterSpawner" unique_id=1707822356]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.98505, -0.44767547, -14.035971)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.983652, 0.00075268745, -2.1006489)
 
 [node name="Marker3D74" type="Marker3D" parent="MonsterSpawner" unique_id=1354844713]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.98505, -0.44767547, -21.471209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.983652, 0.00075268745, -9.535887)
 
 [node name="Marker3D75" type="Marker3D" parent="MonsterSpawner" unique_id=961441179]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.503586, -0.44767547, -23.32896)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.502188, 0.00075268745, -11.393639)
 
 [node name="Marker3D76" type="Marker3D" parent="MonsterSpawner" unique_id=706871780]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.503586, -0.44767547, -20.95775)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.502188, 0.00075268745, -9.0224285)
 
 [node name="Marker3D77" type="Marker3D" parent="MonsterSpawner" unique_id=101176106]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.805075, -0.44767547, -28.143534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.803677, 0.00075268745, -16.208212)
 
 [node name="Marker3D78" type="Marker3D" parent="MonsterSpawner" unique_id=1989954717]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.883207, -0.44767547, -27.120209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.88181, 0.00075268745, -15.184887)
 
 [node name="Marker3D79" type="Marker3D" parent="MonsterSpawner" unique_id=1768098044]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.71698, -0.44767547, -28.380552)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.715582, 0.00075268745, -16.44523)
 
 [node name="Marker3D80" type="Marker3D" parent="MonsterSpawner" unique_id=969409785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.088678, -0.44767547, -12.9709635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.08728, 0.00075268745, -1.0356417)
 
 [node name="Marker3D81" type="Marker3D" parent="MonsterSpawner" unique_id=1243139054]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.558493, -0.44767547, -18.351208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.557095, 0.00075268745, -6.415886)
 
 [node name="Marker3D82" type="Marker3D" parent="MonsterSpawner" unique_id=1957987793]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.314066, -0.44767547, -18.351208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.312668, 0.00075268745, -6.415886)
 
 [node name="Marker3D83" type="Marker3D" parent="MonsterSpawner" unique_id=1197974026]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.45672, -0.5636585, -18.086811)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.45532, -0.11523032, -6.1514893)
 
 [node name="Marker3D22" type="Marker3D" parent="MonsterSpawner" unique_id=15167740]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.688934, -0.44767547, -21.472736)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.687536, 0.00075268745, -9.537415)
 
 [node name="Marker3D23" type="Marker3D" parent="MonsterSpawner" unique_id=1840314192]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.688934, -0.44767547, -28.34913)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.687536, 0.00075268745, -16.413809)
 
 [node name="Marker3D24" type="Marker3D" parent="MonsterSpawner" unique_id=570921487]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.930204, -0.44767547, -34.00075)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9288063, 0.00075268745, -22.06543)
 
 [node name="Marker3D25" type="Marker3D" parent="MonsterSpawner" unique_id=1549885872]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.454376, -0.44767547, -29.892366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.452978, 0.00075268745, -17.957045)
 
 [node name="Marker3D26" type="Marker3D" parent="MonsterSpawner" unique_id=1836363117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.502501, -0.44767547, -44.455055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5011024, 0.00075268745, -32.519733)
 
 [node name="Marker3D27" type="Marker3D" parent="MonsterSpawner" unique_id=1612573385]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.502501, -0.44767547, -36.559174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5011024, 0.00075268745, -24.623852)
 
 [node name="Marker3D28" type="Marker3D" parent="MonsterSpawner" unique_id=182099921]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.502501, -0.44767547, -40.51012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5011024, 0.00075268745, -28.574799)
 
 [node name="Marker3D29" type="Marker3D" parent="MonsterSpawner" unique_id=1631308274]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.990276, -0.44767547, -44.502106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.988878, 0.00075268745, -32.566784)
 
 [node name="Marker3D30" type="Marker3D" parent="MonsterSpawner" unique_id=1429756958]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.582167, -0.44767547, -43.2258)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.580769, 0.00075268745, -31.290478)
 
 [node name="Marker3D31" type="Marker3D" parent="MonsterSpawner" unique_id=793637440]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.066133, -0.44767547, -37.337868)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.064735, 0.00075268745, -25.402546)
 
 [node name="Marker3D32" type="Marker3D" parent="MonsterSpawner" unique_id=1596159055]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.162277, -0.68155265, -37.337868)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.160879, -0.2331245, -25.402546)
 
 [node name="Marker3D33" type="Marker3D" parent="MonsterSpawner" unique_id=1160565226]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.894087, -0.68155265, -37.337868)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.892689, -0.2331245, -25.402546)
 
 [node name="Marker3D34" type="Marker3D" parent="MonsterSpawner" unique_id=859596493]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.595606, -0.68155265, -36.024208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.594208, -0.2331245, -24.088886)
 
 [node name="Marker3D35" type="Marker3D" parent="MonsterSpawner" unique_id=881740638]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.69616, -0.68155265, -36.024208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.694761, -0.2331245, -24.088886)
 
 [node name="Marker3D36" type="Marker3D" parent="MonsterSpawner" unique_id=1249922742]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.177704, -0.68155265, -36.024208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.176308, -0.2331245, -24.088886)
 
 [node name="Marker3D37" type="Marker3D" parent="MonsterSpawner" unique_id=1074636225]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.177704, -0.68155265, -43.26533)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.176308, -0.2331245, -31.33001)
 
 [node name="Marker3D38" type="Marker3D" parent="MonsterSpawner" unique_id=2043539011]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.177704, -0.6815517, -38.799633)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.176308, -0.23312354, -26.864311)
 
 [node name="Marker3D39" type="Marker3D" parent="MonsterSpawner" unique_id=1335916609]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.7339, -0.6815517, -39.06443)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.732502, -0.23312354, -27.129108)
 
 [node name="Marker3D40" type="Marker3D" parent="MonsterSpawner" unique_id=1507539903]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.533215, -0.6815517, -42.541904)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.531816, -0.23312354, -30.606583)
 
 [node name="Marker3D41" type="Marker3D" parent="MonsterSpawner" unique_id=1926795592]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.364454, -0.6815517, -43.131645)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363056, -0.23312354, -31.196323)
 
 [node name="Marker3D42" type="Marker3D" parent="MonsterSpawner" unique_id=1000425324]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.364454, -0.6815517, -48.415405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363056, -0.23312354, -36.480083)
 
 [node name="Marker3D43" type="Marker3D" parent="MonsterSpawner" unique_id=1949893143]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.364454, -0.6815517, -53.979797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.363056, -0.23312354, -42.044476)
 
 [node name="Marker3D44" type="Marker3D" parent="MonsterSpawner" unique_id=2027743700]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.135761, -0.6815517, -53.979797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.134363, -0.23312354, -42.044476)
 
 [node name="Marker3D45" type="Marker3D" parent="MonsterSpawner" unique_id=1239261149]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.135761, -0.6815517, -49.255516)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.134363, -0.23312354, -37.320194)
 
 [node name="Marker3D46" type="Marker3D" parent="MonsterSpawner" unique_id=428175224]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.846455, -0.6815517, -49.255516)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.845057, -0.23312354, -37.320194)
 
 [node name="Marker3D47" type="Marker3D" parent="MonsterSpawner" unique_id=728911011]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.846455, -0.6815517, -52.724792)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.845057, -0.23312354, -40.78947)
 
 [node name="Marker3D48" type="Marker3D" parent="MonsterSpawner" unique_id=1223118612]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.380337, -0.6815517, -55.56169)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.378939, -0.23312354, -43.62637)
 
 [node name="Marker3D49" type="Marker3D" parent="MonsterSpawner" unique_id=335340954]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.957172, -0.6815517, -55.56169)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.955774, -0.23312354, -43.62637)
 
 [node name="Marker3D50" type="Marker3D" parent="MonsterSpawner" unique_id=1908789551]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.768227, -0.6815517, -47.50502)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.766829, -0.23312354, -35.5697)
 
 [node name="Marker3D51" type="Marker3D" parent="MonsterSpawner" unique_id=1618456721]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.140198, -0.6815517, -54.862724)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.1388, -0.23312354, -42.927402)
 
 [node name="Marker3D52" type="Marker3D" parent="MonsterSpawner" unique_id=282032375]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.937626, -0.6815517, -54.862724)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.936228, -0.23312354, -42.927402)
 
 [node name="Marker3D53" type="Marker3D" parent="MonsterSpawner" unique_id=671307660]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.358741, -0.6815517, -50.017075)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3573427, -0.23312354, -38.081753)
 
 [node name="Marker3D54" type="Marker3D" parent="MonsterSpawner" unique_id=93186094]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.443781, -0.6815517, -46.815094)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.442383, -0.23312354, -34.879772)
 
 [node name="Marker3D55" type="Marker3D" parent="MonsterSpawner" unique_id=481893801]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.960377, -0.6815517, -46.815094)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.958979, -0.23312354, -34.879772)
 
 [node name="Marker3D56" type="Marker3D" parent="MonsterSpawner" unique_id=53384999]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.960377, -0.6815517, -54.440544)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.958979, -0.23312354, -42.505222)
 
 [node name="Marker3D57" type="Marker3D" parent="MonsterSpawner" unique_id=2030387051]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.560501, -0.6815517, -54.440544)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.559103, -0.23312354, -42.505222)
 
 [node name="Marker3D58" type="Marker3D" parent="MonsterSpawner" unique_id=2066091437]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.694721, -0.6815517, -48.05342)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.693323, -0.23312354, -36.1181)
 
 [node name="Marker3D59" type="Marker3D" parent="MonsterSpawner" unique_id=1328968580]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.082786, -0.6815517, -52.662117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0813875, -0.23312354, -40.726795)
 
 [node name="Marker3D60" type="Marker3D" parent="MonsterSpawner" unique_id=2111022674]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.80657, -0.6815517, -51.249428)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.80517, -0.23312354, -39.314106)
 
 [node name="Marker3D61" type="Marker3D" parent="MonsterSpawner" unique_id=878983657]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.190384, -0.6815517, -51.249428)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.188988, -0.23312354, -39.314106)
 
 [node name="Marker3D6" type="Marker3D" parent="MonsterSpawner" unique_id=2120316666]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2600198, -0.44767547, -35.684048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7413788, 0.00075268745, -23.748726)
 
 [node name="Marker3D15" type="Marker3D" parent="MonsterSpawner" unique_id=127535749]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.300707, -0.44767547, -44.61966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2993088, 0.00075268745, -32.684338)
 
 [node name="Marker3D16" type="Marker3D" parent="MonsterSpawner" unique_id=1458975805]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2302418, -0.44767547, -44.61966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.23164, 0.00075268745, -32.684338)
 
 [node name="Marker3D7" type="Marker3D" parent="MonsterSpawner" unique_id=1541553090]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9966288, -0.44767547, -34.100426)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9952307, 0.00075268745, -22.165104)
 
 [node name="Marker3D8" type="Marker3D" parent="MonsterSpawner" unique_id=223836649]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.82241, -0.44767547, -39.059853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.821012, 0.00075268745, -27.12453)
 
 [node name="Marker3D9" type="Marker3D" parent="MonsterSpawner" unique_id=1589349713]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81058335, -0.44767547, -41.403305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.811981, 0.00075268745, -29.467983)
 
 [node name="Marker3D10" type="Marker3D" parent="MonsterSpawner" unique_id=398747868]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3941803, -0.44767547, -41.403305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6072178, 0.00075268745, -29.467983)
 
 [node name="Marker3D3" type="Marker3D" parent="MonsterSpawner" unique_id=2133876688]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8301997, -0.910663, -27.469522)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1711979, -0.46223485, -15.534201)
 
 [node name="Marker3D2" type="Marker3D" parent="MonsterSpawner" unique_id=1549894827]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27398968, -0.9136665, -25.079296)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.275388, -0.46523833, -13.143974)
 
 [node name="Marker3D11" type="Marker3D" parent="MonsterSpawner" unique_id=500921382]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3098574, -0.9136665, -21.544168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6915407, -0.46523833, -9.608847)
 
 [node name="Marker3D12" type="Marker3D" parent="MonsterSpawner" unique_id=302980621]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7271099, -0.9136665, -12.336508)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.728508, -0.46523833, -0.401186)
 
 [node name="Marker3D13" type="Marker3D" parent="MonsterSpawner" unique_id=1199074615]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8577147, -0.9136665, -12.336508)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8563166, -0.46523833, -0.401186)
 
 [node name="Marker3D14" type="Marker3D" parent="MonsterSpawner" unique_id=128858725]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8577147, -0.9136665, -12.336508)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8563166, -0.46523833, -0.401186)
 
 [node name="VictoryScreen" parent="." unique_id=648325439 node_paths=PackedStringArray("pause_menu") instance=ExtResource("46_victory")]
 pause_menu = NodePath("../PauseMenu")
