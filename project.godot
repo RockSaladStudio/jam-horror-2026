@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://bpw6vp8tp4tlu"
 
 AudioSettings="*res://Menu/AudioSettings.gd"
 StressManager="*uid://k60m3y1x1177"
+Music="*res://autoloads/music.tscn"
 
 [display]
 

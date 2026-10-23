@@ -13,6 +13,8 @@ var _is_defeated: bool = false
 @onready var impact_sfx: AudioStreamPlayer = $ImpactSFX
 @onready var aie_sfx: AudioStreamPlayer = $AieSFX
 @export var aie_cooldown: float = 2.0  # secondes minimum entre deux "aïe"
+@export var son_choc_box: AudioStream  # choc fort contre une box (sinon celui de ImpactSFX)
+var _son_choc_mur: AudioStream
 var _contre_mur := false
 var _contre_box := false
 var _aie_en_attente := false
@@ -26,6 +28,7 @@ var _pied := 0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	_son_choc_mur = impact_sfx.stream
 
 func set_defeated() -> void:
 	_is_defeated = true
@@ -68,17 +71,21 @@ func _physics_process(delta: float) -> void:
 		_distance_pas = pas_distance  # à la reprise, le premier pas part tout de suite
 		_pied = 0                     # et c'est toujours le son 1
 
-	# Mur ou box : son d'impact seulement au moment du contact, pas à chaque frame
+	# Choc seulement au moment du contact, pas à chaque frame :
+	# fort + "aïe" contre une box, faible contre un mur
 	var touche := is_on_wall()
-	if touche and not _contre_mur:
-		impact_sfx.play()
-	_contre_mur = touche
-
-	# "Aïe" seulement quand on se cogne dans une box, pas dans un mur
 	var touche_box := _touche_box()
 	if touche_box and not _contre_box:
+		_choc(son_choc_box)
 		_aie()
+	elif touche and not _contre_mur:
+		_choc(_son_choc_mur)
+	_contre_mur = touche
 	_contre_box = touche_box
+
+func _choc(son: AudioStream) -> void:
+	impact_sfx.stream = son if son else _son_choc_mur
+	impact_sfx.play()
 
 # Une box = une instance d'un GLB "box-*.glb" : le StaticBody3D généré à l'import
 # a pour owner la racine de cette instance.

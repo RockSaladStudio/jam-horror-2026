@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://bcmreumed5m0" path="res://Player/Interaction.gd" id="4_inter"]
 [ext_resource type="AudioStream" uid="uid://beqa7ahlg42k5" path="res://Audio/sfx/wall_weak_hit.wav" id="6_272bh"]
 [ext_resource type="AudioStream" uid="uid://c5b5s0n4ljnom" path="res://Audio/sfx/wall_contact.wav" id="7_5vw27"]
-[ext_resource type="AudioStream" uid="uid://dn7a8wctpp1rk" path="res://Audio/music/therapeuticaria812-dark-horor-293085.ogg" id="10_4c57u"]
 [ext_resource type="PackedScene" uid="uid://ded14jbtkidyi" path="res://Enviroment/GLB format/structure-window-wide.glb" id="11_efxa6"]
 [ext_resource type="PackedScene" uid="uid://01vyqofckfom" path="res://Enviroment/GLB format/structure-wall.glb" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://w3nut73jluvh" path="res://Enviroment/GLB format/structure-corner-inner.glb" id="13_w48qg"]
@@ -47,6 +46,12 @@
 [ext_resource type="PackedScene" uid="uid://loctge207b4r" path="res://Enviroment/GLB format/door.glb" id="43_d2t1y"]
 [ext_resource type="PackedScene" uid="uid://dar5rd2a7bbm3" path="res://Keypad/Keypad.tscn" id="45_qnost"]
 [ext_resource type="PackedScene" path="res://Menu/VictoryScreen/VictoryScreen.tscn" id="46_victory"]
+[ext_resource type="AudioStream" uid="uid://cpccvr4rmbstj" path="res://Audio/sfx/door_open.wav" id="47_dooropen"]
+[ext_resource type="AudioStream" uid="uid://c4ucq0u1l4gef" path="res://Audio/sfx/door_close.wav" id="48_doorclose"]
+[ext_resource type="AudioStream" uid="uid://dm563wmt5fg5i" path="res://Audio/sfx/wall_hard_hit.wav" id="49_hardhit"]
+[ext_resource type="AudioStream" uid="uid://csayv21vtiomm" path="res://Audio/sfx/step_monster_1.wav" id="50_monstep1"]
+[ext_resource type="AudioStream" uid="uid://bi4cbfrrsb88y" path="res://Audio/sfx/step_monster_2.wav" id="51_monstep2"]
+[ext_resource type="Script" path="res://scripts/monster/monster_steps.gd" id="52_monsteps"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_porte"]
 size = Vector3(1.8, 1.6, 0.1)
@@ -256,10 +261,15 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.200726, 0.11486411, 0.2804
 script = ExtResource("2_0n3wm")
 animation_name = &"PorteOpen"
 animation_player = NodePath("../../AnimationPlayer")
+open_sound = ExtResource("47_dooropen")
+close_sound = ExtResource("48_doorclose")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="enviro/PorteCharniere/door-wide-closed3/Door" unique_id=1071771927]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.4)
 shape = SubResource("BoxShape3D_porte")
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="enviro/PorteCharniere/door-wide-closed3/Door" unique_id=329320231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.4)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="enviro/PorteCharniere" unique_id=651330034]
 libraries/ = SubResource("AnimationLibrary_qnost")
@@ -628,6 +638,7 @@ omni_attenuation = 1.713
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6819897, -0.7352801, 33.531006)
 script = ExtResource("2_1bvp3")
 camera = NodePath("Camera3D")
+son_choc_box = ExtResource("49_hardhit")
 sons_pas = Array[AudioStream]([ExtResource("3_lswn8"), ExtResource("4_a6jrf")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1769869909]
@@ -676,11 +687,6 @@ theme_override_colors/font_color = Color(1, 0.96, 0.85, 1)
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1873000272]
-stream = ExtResource("10_4c57u")
-volume_db = -15.0
-autoplay = true
 
 [node name="structure-window-wide2" parent="." unique_id=1070815725 instance=ExtResource("11_efxa6")]
 transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, -6.225523, 0.008766174, 11.177248)
@@ -936,10 +942,15 @@ transform = Transform3D(3.1488101, 0, 0, 0, 1.9393526, 0, 0, 0, 2, -2.2801952, 0
 script = ExtResource("2_0n3wm")
 animation_name = &"PorteExitOpen"
 animation_player = NodePath("../../enviro/PorteCharniere/AnimationPlayer")
+open_sound = ExtResource("47_dooropen")
+close_sound = ExtResource("48_doorclose")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door-wide-closed2/Door" unique_id=800941508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.4)
 shape = SubResource("BoxShape3D_porte")
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="door-wide-closed2/Door" unique_id=1172969358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.4)
 
 [node name="VictoryZone" type="Area3D" parent="." unique_id=1028429788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28, 1.7, -35.6)
@@ -2008,6 +2019,16 @@ spot_attenuation = -4.36
 [node name="door3" parent="." unique_id=1787733118 instance=ExtResource("43_d2t1y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.6543431, 0.00902462, 38.818016)
 
+[node name="MonsterSteps" type="Node3D" parent="." unique_id=424789107 node_paths=PackedStringArray("player")]
+script = ExtResource("52_monsteps")
+player = NodePath("../CharacterBody3D")
+sons_pas = Array[AudioStream]([ExtResource("50_monstep1"), ExtResource("51_monstep2")])
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="MonsterSteps" unique_id=1065730817]
+volume_db = -3.0
+unit_size = 4.0
+
 [connection signal="body_entered" from="VictoryZone" to="VictoryScreen" method="_on_victory_zone_body_entered"]
 [connection signal="code_accepted" from="screen-flat2/Keypad" to="door-wide-closed2/Door" method="unlock" unbinds=1]
 [connection signal="code_accepted" from="screen-flat3/Keypad" to="enviro/PorteCharniere/door-wide-closed3/Door" method="unlock" unbinds=1]
+[connection signal="opened" from="enviro/PorteCharniere/door-wide-closed3/Door" to="MonsterSteps" method="start"]

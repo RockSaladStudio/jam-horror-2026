@@ -15,9 +15,14 @@ signal locked_attempt
 @export var close_text: String = "fermer la porte"
 @export var locked_text: String = "ouvrir la porte (verrouillee)"
 
+@export_group("Sons")
+@export var open_sound: AudioStream
+@export var close_sound: AudioStream
+
 var is_open: bool = false
 
 @onready var _anim: AnimationPlayer = animation_player if animation_player else $AnimationPlayer
+@onready var _audio: AudioStreamPlayer3D = get_node_or_null(^"Audio")
 
 func get_interaction_text() -> String:
 	if is_open:
@@ -47,6 +52,7 @@ func open() -> void:
 		return
 	is_open = true
 	_anim.play(animation_name)
+	_play(open_sound)
 	opened.emit()
 
 func close() -> void:
@@ -54,4 +60,10 @@ func close() -> void:
 		return
 	is_open = false
 	_anim.play_backwards(animation_name)
+	_play(close_sound)
 	closed.emit()
+
+func _play(stream: AudioStream) -> void:
+	if _audio and stream:
+		_audio.stream = stream
+		_audio.play()
