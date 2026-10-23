@@ -140,11 +140,13 @@ mesh = SubResource("BoxMesh_72w31")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="enviro/MeshInstance3D12/StaticBody3D" unique_id=1584132253]
 shape = SubResource("BoxShape3D_72w31")
 
-[node name="MonsterSpawner" parent="enviro" unique_id=1006326142 node_paths=PackedStringArray("camera", "blindfold") instance=ExtResource("2_tbgi4")]
+[node name="MonsterSpawner" parent="enviro" unique_id=1006326142 node_paths=PackedStringArray("camera", "blindfold", "player") instance=ExtResource("2_tbgi4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3752265, -2.781566, 6.949825)
 camera = NodePath("../../CharacterBody3D/Camera3D")
 blindfold = NodePath("../../CharacterBody3D/Camera3D/MeshInstance3D")
+player = NodePath("../../CharacterBody3D")
 fov_angle = 60.0
+spawn_chance = 0.01
 
 [node name="Marker3D" type="Marker3D" parent="enviro/MonsterSpawner" unique_id=1320920419]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0717487, 0, 0)

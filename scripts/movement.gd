@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export_range(-90.0, 0.0, 0.1, "radians_as_degrees") var min_vertical_angle: float = -PI/2
 @export_range(0.0, 90.0, 0.1, "radians_as_degrees") var max_vertical_angle: float = PI/4
 
+var _is_defeated: bool = false
+
 # Son mur
 @onready var impact_sfx: AudioStreamPlayer = $ImpactSFX
 @onready var aie_sfx: AudioStreamPlayer = $AieSFX
@@ -23,7 +25,16 @@ var _pied := 0
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func set_defeated() -> void:
+	_is_defeated = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 func _physics_process(delta: float) -> void:
+	if _is_defeated:
+		print("dead")
+		velocity = Vector3.ZERO
+		return
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -71,6 +82,8 @@ func _cogner_mur() -> void:
 	_aie_en_attente = false
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _is_defeated:
+		return
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x * mouse_sensitivity
 		rotation.y = wrapf(rotation.y, 0.0, TAU)

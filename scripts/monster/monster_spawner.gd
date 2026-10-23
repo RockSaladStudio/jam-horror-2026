@@ -9,13 +9,13 @@ extends Node3D
 # Référence au bandeau du joueur
 @export var blindfold: Blindfold
 
+# Référence au joueur
+@export var player: CharacterBody3D
+
 # Angle de champ de vision supplémentaire (en degrés)
 # 0 = utiliser uniquement le frustum de la caméra
 # >0 = restreindre davantage le FOV
 @export var fov_angle: float = 0.0
-
-# Durée de vie du monstre (en secondes) - après ce délai, il disparaît et un nouveau peut spawner
-@export var monster_lifespan: float = 5.0
 
 # Distance maximale de spawn (0 = pas de limite)
 @export var max_spawn_distance: float = 0.0
@@ -42,7 +42,7 @@ var current_monster: Node3D = null
 var last_spawn_time: float = 0.0
 
 # Chance de spawn à chaque tick du timer
-@export var spawn_chance: float = 0.3
+@export var spawn_chance: float
 
 # Timer tick rate (en fois par seconde)
 @export var timer_tick_rate: float = 1
@@ -200,12 +200,9 @@ func spawn_monster() -> void:
 	add_child(monster)
 	monster.global_position = spawn_pos
 	monster.camera = camera
+	monster.player = player
 
-	# Configurer la durée de vie et le bandeau
-	monster.lifespan = monster_lifespan
 	monster.set_blindfold(blindfold)
-
-	# Stocker la référence au monstre actuel
 	current_monster = monster
 
 	# Mettre à jour le temps du dernier spawn
