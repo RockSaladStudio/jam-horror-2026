@@ -41,9 +41,11 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:arrow-basic-rounded": {
-"generate/physics": true,
-"physics/shape_type": 2
+"PATH:crane": {
+"generate/physics": true
+},
+"PATH:crane/arm": {
+"generate/physics": true
 }
 }
 }
