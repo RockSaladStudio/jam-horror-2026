@@ -41,6 +41,14 @@ var current_monster: Node3D = null
 # Temps du dernier spawn
 var last_spawn_time: float = 0.0
 
+# Chance de spawn à chaque tick du timer
+@export var spawn_chance: float = 0.3
+
+# Timer tick rate (en fois par seconde)
+@export var timer_tick_rate: float = 1
+
+var timer: float
+
 
 func _ready() -> void:
 	# Récupérer l'espace 3D pour les raycasts
@@ -50,8 +58,6 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Node3D:
 			spawn_points.append(child)
-
-	print("MonsterSpawner initialisé avec ", spawn_points.size(), " points de spawn")
 
 
 func _process(_delta: float) -> void:
@@ -92,8 +98,15 @@ func can_spawn_monster() -> bool:
 	if current_time - last_spawn_time < actual_interval:
 		return false
 
-	return true
-
+	if timer > 1.0/timer_tick_rate:
+		var rand = randf()
+		print(rand)
+		if rand <= 0.3:
+			return true
+		timer = 0
+		
+	timer += get_process_delta_time()
+	return false
 
 ## Récupère les points de spawn visibles par le joueur
 func get_visible_spawn_points() -> Array[Node3D]:
