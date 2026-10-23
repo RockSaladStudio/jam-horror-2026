@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cgfckio7h402r"]
 
-[ext_resource type="Shader" uid="uid://devo6ffi071jb" path="res://shaders/blindfold.gdshader" id="1_0xm2m"]
+[ext_resource type="Shader" uid="uid://devo6ffi071jb" path="res://new_shader.gdshader" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://2xywenbxohvv" path="res://Enviroment/GLB format/hopper-square.glb" id="1_gb15f"]
+[ext_resource type="AudioStream" uid="uid://bvu1wls3sqmig" path="res://Audio/sfx/eh-oh-from-teletubbies.wav" id="1_gngh3"]
 [ext_resource type="Script" uid="uid://bclubid7yxd36" path="res://scripts/movement.gd" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dgh5e7e8rwisy" path="res://scripts/blindfold.gd" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://tlfwxavrfne7" path="res://Enviroment/GLB format/indicator-special-area.glb" id="3_5mkgo"]
@@ -230,6 +231,9 @@ text = "Thank kenney"
 font_size = 8
 
 [node name="Main" type="Node3D" unique_id=861964695]
+
+[node name="eh-oh-from-teletubbies" type="AudioStreamPlayer" parent="." unique_id=1034205055]
+stream = ExtResource("1_gngh3")
 
 [node name="enviro" type="Node" parent="." unique_id=502576652]
 
@@ -1299,11 +1303,12 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.95
 
 [node name="PauseMenu" parent="." unique_id=1299003614 instance=ExtResource("26_a6jrf")]
 
-[node name="MonsterSpawner" parent="." unique_id=1006326142 node_paths=PackedStringArray("camera", "blindfold", "player") instance=ExtResource("27_sqvbp")]
+[node name="MonsterSpawner" parent="." unique_id=1006326142 node_paths=PackedStringArray("camera", "blindfold", "player", "audio_death") instance=ExtResource("27_sqvbp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9171143, 0.8103914, 11.540121)
 camera = NodePath("../CharacterBody3D/Camera3D")
 blindfold = NodePath("../CharacterBody3D/Camera3D/MeshInstance3D")
 player = NodePath("../CharacterBody3D")
+audio_death = NodePath("../eh-oh-from-teletubbies")
 max_spawn_distance = 11.0
 
 [node name="Marker3D" type="Marker3D" parent="MonsterSpawner" unique_id=1141003351]
