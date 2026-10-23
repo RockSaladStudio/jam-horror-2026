@@ -6,6 +6,7 @@
 
 [node name="Monster" type="Node3D" unique_id=773046877]
 script = ExtResource("1_rk3jy")
+player_death_time = 2.0
 screamer_sound = ExtResource("2_7qtxx")
 
 [node name="Sketchfab_Scene" parent="." unique_id=1855209554 instance=ExtResource("2_1uvy5")]

@@ -1350,6 +1350,7 @@ camera = NodePath("../CharacterBody3D/Camera3D")
 blindfold = NodePath("../CharacterBody3D/Camera3D/MeshInstance3D")
 player = NodePath("../CharacterBody3D")
 audio_death = NodePath("../eh-oh-from-teletubbies")
+max_spawn_distance = 10.0
 spawn_chance = 0.2
 
 [node name="Marker3D" type="Marker3D" parent="MonsterSpawner" unique_id=1141003351]
