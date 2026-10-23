@@ -1,5 +1,7 @@
 extends Node3D
 
+const MAIN_MENU_PATH := "res://Menu/Menu.tscn"
+
 # Le monstre peut-il disparaitre si le joueur baisse le bandeau ?
 @export var disappear_on_blindfold_down: bool = true
 
@@ -75,6 +77,11 @@ func _is_seen_by_player() -> bool:
 	var screen_height: float = get_viewport().get_visible_rect().size.y
 	return screen_pos.y / screen_height >= 1.0 - blindfold.current_progress
 
+func toggle_pause() -> void:
+	var paused := not get_tree().paused
+	get_tree().paused = paused
+	visible = paused
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if paused else Input.MOUSE_MODE_CAPTURED
 
 ## Déclenche la mort du joueur quand le timer est écoulé
 func trigger_player_death() -> void:
@@ -104,10 +111,6 @@ func trigger_player_death() -> void:
 
 	print("Screamer triggered")
 	audio_death.play()
-
-	# get_tree().create_timer(2).timeout.connect(_death_timeout)
-	# Gelé le timer
+	toggle_pause()
+	get_tree().change_scene_to_file(MAIN_MENU_PATH)
 	player_death_timer = player_death_time
-
-func _death_timeout() -> void:
-	get_tree().quit()

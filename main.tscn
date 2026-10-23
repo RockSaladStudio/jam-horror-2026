@@ -51,9 +51,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_porte"]
 size = Vector3(1.8, 1.6, 0.1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_victoire"]
-size = Vector3(5, 3, 2.4)
-
 [sub_resource type="Animation" id="Animation_d2t1y"]
 resource_name = "PorteExitOpen"
 length = 2.3
@@ -172,6 +169,9 @@ emission = Color(1, 1, 0, 1)
 [sub_resource type="TextMesh" id="TextMesh_a0dc1"]
 material = SubResource("StandardMaterial3D_ftsjt")
 text = "EXIT"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_victoire"]
+size = Vector3(5, 3, 2.4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgh26"]
 emission_enabled = true
@@ -1345,14 +1345,11 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.95
 [node name="PauseMenu" parent="." unique_id=1299003614 instance=ExtResource("26_a6jrf")]
 
 [node name="MonsterSpawner" parent="." unique_id=1006326142 node_paths=PackedStringArray("camera", "blindfold", "player", "audio_death") instance=ExtResource("27_sqvbp")]
-[node name="VictoryScreen" parent="." unique_id=648325439 node_paths=PackedStringArray("pause_menu") instance=ExtResource("46_victory")]
-pause_menu = NodePath("../PauseMenu")
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9171143, 0.8103914, 11.540121)
 camera = NodePath("../CharacterBody3D/Camera3D")
 blindfold = NodePath("../CharacterBody3D/Camera3D/MeshInstance3D")
 player = NodePath("../CharacterBody3D")
 audio_death = NodePath("../eh-oh-from-teletubbies")
-max_spawn_distance = 11.0
+spawn_chance = 0.2
 
 [node name="Marker3D" type="Marker3D" parent="MonsterSpawner" unique_id=1141003351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8301997, -0.44767547, -31.097965)
@@ -1602,6 +1599,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8577147, -0.9136665, -12.33
 
 [node name="Marker3D14" type="Marker3D" parent="MonsterSpawner" unique_id=128858725]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8577147, -0.9136665, -12.336508)
+
+[node name="VictoryScreen" parent="." unique_id=648325439 node_paths=PackedStringArray("pause_menu") instance=ExtResource("46_victory")]
+pause_menu = NodePath("../PauseMenu")
 
 [node name="cog-c2" parent="." unique_id=1605156688 instance=ExtResource("28_sph85")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.445668, 0.12669793, -16.172592)
@@ -2009,6 +2009,6 @@ spot_attenuation = -4.36
 [node name="door3" parent="." unique_id=1787733118 instance=ExtResource("43_d2t1y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.6543431, 0.00902462, 38.818016)
 
+[connection signal="body_entered" from="VictoryZone" to="VictoryScreen" method="_on_victory_zone_body_entered"]
 [connection signal="code_accepted" from="screen-flat2/Keypad" to="door-wide-closed2/Door" method="unlock" unbinds=1]
 [connection signal="code_accepted" from="screen-flat3/Keypad" to="enviro/PorteCharniere/door-wide-closed3/Door" method="unlock" unbinds=1]
-[connection signal="body_entered" from="VictoryZone" to="VictoryScreen" method="_on_victory_zone_body_entered"]
